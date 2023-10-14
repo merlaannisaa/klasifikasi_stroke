@@ -162,8 +162,7 @@ elif menu == "Visualisasi":
     metrics = ["Accuracy", "Recall", "F1 Score"]
     values = [accuracy, recall, f1]
 
-    plt.figure(figsize=(8, 6))
-    # fig.update_layout(width = 500, height = 600)
+    plt.figure(figsize=(7, 5))
     plt.bar(metrics, values)
     plt.title("Evaluation Metrics on Test Data")
     plt.xlabel("Metrics")
@@ -173,8 +172,7 @@ elif menu == "Visualisasi":
     fpr, tpr, thresholds = roc_curve(y_test, y_prob)
 
     # Membuat kurva ROC
-    fig, ax = plt.subplots(figsize=(8, 6))
-    fig.update_layout(width = 500, height = 600)
+    fig, ax = plt.subplots(figsize=(7, 5))
     ax.plot(fpr, tpr, label=f'ROC curve (AUC = {roc_score:.2f})')
     ax.plot([0, 1], [0, 1], 'k--')
     ax.set_xlim([0.0, 1.0])
