@@ -49,7 +49,7 @@ st.title("Stroke Prediction App")
 
 # Submenu untuk memilih halaman
 menu = st.sidebar.radio("Navigation", ["Prediction", "Confusion Matrix"])
-
+model = load_model()
 if menu == "Prediction":
     st.subheader("Enter Patient Information")
       
