@@ -22,16 +22,6 @@ def predict_stroke(model, input_data):
     prediction = model.predict(input_data)
     return prediction
 
-# Fungsi untuk membuat visualisasi
-def plot_stroke_risk(prediction):
-    labels = ["Low Risk", "High Risk"]
-    values = [prediction[0], 1 - prediction[0]]
-
-    plt.figure(figsize=(5, 5))
-    plt.pie(values, labels=labels, autopct='%1.1f%%', startangle=140)
-    plt.title("Stroke Risk")
-    st.pyplot(plt)
-
 # Fungsi untuk membuat visualisasi akurasi dengan bar chart
 def plot_accuracy(accuracy):
     labels = ["Accuracy"]
