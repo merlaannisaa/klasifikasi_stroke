@@ -186,9 +186,9 @@ elif menu == "Visualisasi":
     plot_roc_curve(y_test, y_pred)
 
 # Tambahkan kode berikut untuk meng-host aplikasi di Streamlit Sharing
-if __name__ == "__main__":
-    st.write("""
-    # Stroke Prediction App
-    This app predicts the risk of stroke based on patient information.
-    Please fill in the details on the left and click the 'Predict' button.
-    """)
+# if __name__ == "__main__":
+    # st.write("""
+    # # Stroke Prediction App
+    # This app predicts the risk of stroke based on patient information.
+    # Please fill in the details on the left and click the 'Predict' button.
+    # """)
