@@ -137,7 +137,7 @@ elif menu == "Visualisasi":
     
     # Menggunakan len(X_test_stroke) untuk menentukan jumlah data pengujian yang sama dengan stroke_class
     X_train_non_stroke, X_test_non_stroke, y_train_non_stroke, y_test_non_stroke = train_test_split(
-        X_non_stroke, y_non_stroke, test_size=len(X_test_stroke), random_state=0)
+    X_non_stroke, y_non_stroke, test_size=len(X_test_stroke), random_state=0)
     
     # Menggabungkan data pelatihan dan pengujian dari kedua kelas (stroke dan non-stroke)
     X_train = pd.concat([X_train_stroke, X_train_non_stroke])
@@ -150,7 +150,7 @@ elif menu == "Visualisasi":
     smoteenn = SMOTEENN(random_state=0, smote=SMOTE(sampling_strategy='auto', k_neighbors=36, random_state=0))
     resX_train, resY_train= smoteenn.fit_resample(X_train,y_train)
 
-        # Mencetak jumlah data dalam set pelatihan dan pengujian
+    # Mencetak jumlah data dalam set pelatihan dan pengujian
     st.write(f"Number of samples in Training Data: {len(X_train)}")
     st.write(f"Number of samples in Testing Data: {len(X_test)}")
 
@@ -190,21 +190,21 @@ elif menu == "Visualisasi":
     st.write("### ROC AUC:", roc_auc)
 
     fpr, tpr, thresholds = roc_curve(y_test, y_prob)
-        auc = roc_auc_score(y_test, y_prob)
+    auc = roc_auc_score(y_test, y_prob)
 
-        # Membuat kurva ROC
-        fig, ax = plt.subplots(figsize=(8, 6))
-        ax.plot(fpr, tpr, label=f'ROC curve (AUC = {auc:.2f})')
-        ax.plot([0, 1], [0, 1], 'k--')
-        ax.set_xlim([0.0, 1.0])
-        ax.set_ylim([0.0, 1.05])
-        ax.set_xlabel('False Positive Rate')
-        ax.set_ylabel('True Positive Rate')
-        ax.set_title('Receiver Operating Characteristic (ROC) Curve')
-        ax.legend(loc="lower right")
+    # Membuat kurva ROC
+    fig, ax = plt.subplots(figsize=(8, 6))
+    ax.plot(fpr, tpr, label=f'ROC curve (AUC = {auc:.2f})')
+    ax.plot([0, 1], [0, 1], 'k--')
+    ax.set_xlim([0.0, 1.0])
+    ax.set_ylim([0.0, 1.05])
+    ax.set_xlabel('False Positive Rate')
+    ax.set_ylabel('True Positive Rate')
+    ax.set_title('Receiver Operating Characteristic (ROC) Curve')
+    ax.legend(loc="lower right")
 
-        # Menampilkan kurva ROC di aplikasi Streamlit
-        st.pyplot(fig)
+    # Menampilkan kurva ROC di aplikasi Streamlit
+    st.pyplot(fig)
     
 # Tambahkan kode berikut untuk meng-host aplikasi di Streamlit Sharing
 # if __name__ == "__main__":
