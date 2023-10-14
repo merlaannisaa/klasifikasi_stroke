@@ -68,32 +68,45 @@ menu = st.sidebar.radio("Navigation", ["Klasifikasi", "Visualisasi"])
 model = load_model()
 if menu == "Klasifikasi":
     st.subheader("Input Data")
-    
+
+    #membagi kolom
+    col1, col2 = st.columns(2)
+
+    with col1 :
     gender = st.selectbox("Gender", ["Female", "Male"])
     gender = 0 if gender == "Female" else 1
-    
+
+    with col2 :
     age = st.text_input("Age")
 
+    with col1 :
     hypertension = st.selectbox("Hypertension", ["No", "Yes"])
     hypertension = 0 if hypertension == "No" else 1
-    
+
+    with col2 :
     heart_disease = st.selectbox("Heart Disease", ["No", "Yes"])
     heart_disease = 0 if heart_disease == "No" else 1
-    
+
+    with col1 :
     ever_married = st.selectbox("Ever Married", ["No", "Yes"])
     ever_married = 0 if ever_married == "No" else 1
-    
+
+    with col2:
     work_type_dict = {"Govt Job": 0, "Never Worked": 1, "Private": 2, "Self-employed": 3, "Children": 4}
     work_type = st.selectbox("Work Type", list(work_type_dict.keys()))
     work_type = work_type_dict[work_type]
-    
+
+    with col1 :
     residence_type = st.selectbox("Residence Type", ["Rural", "Urban"])
     residence_type = 0 if residence_type == "Rural" else 1
-    
+
+    with col2:
     avg_glucose_level = st.text_input("Average Glucose Level")
-    
+
+    with col1 :
     bmi = st.text_input("BMI")
-    
+
+    with col2:
     smoking_status_dict = {"Unknown": 0, "Formerly Smoked": 1, "Never Smoked": 2, "Smokes": 3}
     smoking_status = st.selectbox("Smoking Status", list(smoking_status_dict.keys()))
     smoking_status = smoking_status_dict[smoking_status]
