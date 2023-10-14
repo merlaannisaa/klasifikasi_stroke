@@ -183,14 +183,11 @@ elif menu == "Visualisasi":
     f1 = f1_score(y_test_stroke, y_pred)
     roc_score = roc_auc_score(y_test, y_pred)
     
-    # Membuat dataframe
-    metrics_df = pd.DataFrame({
-        "Metric": ["Accuracy", "Recall", "F1 Score", "ROC Score"],
-        "Test Data": [accuracy, recall, f1, roc_score]
-
-    # Menampilkan dataframe
     st.write("## Evaluation Metrics on Test Data")
-    st.write(metrics_df)
+    st.write("### Accuracy:", accuracy)
+    st.write("### Recall:", recall)
+    st.write("### F1 Score:", f1)
+    st.write("### ROC AUC:", roc_auc)
 
     fpr, tpr, thresholds = roc_curve(y_test, y_prob)
         auc = roc_auc_score(y_test, y_prob)
