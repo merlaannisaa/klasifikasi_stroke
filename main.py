@@ -73,16 +73,13 @@ if menu == "Klasifikasi":
     gender = 0 if gender == "Female" else 1
     
     age = st.text_input("Age")
-    
-    heart_disease = st.selectbox("Heart Disease", ["No", "Yes"])
-    heart_disease = 0 if heart_disease == "No" else 1
-    
+
     hypertension = st.selectbox("Hypertension", ["No", "Yes"])
     hypertension = 0 if hypertension == "No" else 1
     
     heart_disease = st.selectbox("Heart Disease", ["No", "Yes"])
     heart_disease = 0 if heart_disease == "No" else 1
-        
+    
     ever_married = st.selectbox("Ever Married", ["No", "Yes"])
     ever_married = 0 if ever_married == "No" else 1
     
