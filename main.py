@@ -8,6 +8,7 @@ from imblearn.combine import SMOTEENN
 from imblearn.over_sampling import SMOTE
 from sklearn.metrics import accuracy_score, confusion_matrix
 from sklearn.metrics import plot_confusion_matrix
+from sklearn.metrics import recall_score, f1_score, roc_curve, roc_auc_score
 
 # Fungsi untuk memuat model
 def load_model():
@@ -144,6 +145,37 @@ elif menu == "Confusion Matrix":
     # Menampilkan confusion matrix
     st.write(f"### Confusion Matrix")
     plot_confusion_matrix(model, X_test, y_test)
+    st.pyplot()
+
+        # Menghitung recall, F1 score, dan ROC curve
+    recall = recall_score(y_test, y_pred)
+    f1 = f1_score(y_test, y_pred)
+    fpr, tpr, thresholds = roc_curve(y_test, model.predict_proba(X_test)[:, 1])
+    auc = roc_auc_score(y_test_stroke, model.predict_proba(X_test)[:, 1])
+
+    # Menghitung FN, TP, TN, FP
+    tn, fp, fn, tp = confusion_matrix(y_test, y_pred).ravel()
+
+    # Menampilkan metrik
+    st.write(f"#### Recall: {recall:.2f}")
+    st.write(f"#### F1 Score: {f1:.2f}")
+    st.write(f"#### Area Under ROC Curve (AUC): {auc:.2f}")
+    st.write(f"#### True Positives (TP): {tp}")
+    st.write(f"#### True Negatives (TN): {tn}")
+    st.write(f"#### False Positives (FP): {fp}")
+    st.write(f"#### False Negatives (FN): {fn}")
+
+    # Menampilkan ROC curve
+    st.write(f"### ROC Curve")
+    plt.figure(figsize=(8, 6))
+    plt.plot(fpr, tpr, label=f'AUC = {auc:.2f}')
+    plt.plot([0, 1], [0, 1], 'k--')
+    plt.xlim([0.0, 1.0])
+    plt.ylim([0.0, 1.05])
+    plt.xlabel('False Positive Rate')
+    plt.ylabel('True Positive Rate')
+    plt.title('Receiver Operating Characteristic (ROC) Curve')
+    plt.legend(loc="lower right")
     st.pyplot()
     
 # Tambahkan kode berikut untuk meng-host aplikasi di Streamlit Sharing
