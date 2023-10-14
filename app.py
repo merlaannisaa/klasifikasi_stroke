@@ -24,6 +24,8 @@ def plot_stroke_risk(prediction):
     plt.title("Stroke Risk")
     st.pyplot()
 
+st.set_page_config(layout="wide")
+
 # Muat model
 model = load_model()
 
@@ -68,7 +70,6 @@ if st.button("Predict"):
 
 # Tambahkan kode berikut untuk meng-host aplikasi di Streamlit Sharing
 if __name__ == "__main__":
-    st.set_page_config(layout="wide")
     st.write("""
     # Stroke Prediction App
     This app predicts the risk of stroke based on patient information.
