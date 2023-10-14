@@ -106,13 +106,13 @@ if menu == "Klasifikasi":
                 
                 st.write("## Prediction Result")
                 if prediction[0] == 1:
-                    st.error("High risk of stroke!")
+                    st.error("Risiko stroke tinggi!")
                 else:
-                    st.success("Low risk of stroke!")
+                    st.success("Risiko stroke rendah!")
     
                 plot_stroke_risk(prediction)
             except ValueError:
-                st.error("Invalid input. Please check the values you entered.")
+                st.error("Invalid input.")
 
 elif menu == "Visualisasi":
     st.subheader("Visualisasi")
