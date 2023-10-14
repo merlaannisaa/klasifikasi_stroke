@@ -187,7 +187,7 @@ elif menu == "Visualisasi":
     st.write("### Accuracy:", accuracy)
     st.write("### Recall:", recall)
     st.write("### F1 Score:", f1)
-    st.write("### ROC AUC:", roc_auc)
+    st.write("### ROC AUC:", roc_score)
 
     fpr, tpr, thresholds = roc_curve(y_test, y_prob)
     auc = roc_auc_score(y_test, y_prob)
