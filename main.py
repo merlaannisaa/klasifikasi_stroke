@@ -112,8 +112,7 @@ if menu == "Klasifikasi":
                     st.error("Risiko stroke tinggi!")
                 else:
                     st.success("Risiko stroke rendah!")
-    
-                plot_stroke_risk(prediction)
+   
             except ValueError:
                 st.error("Invalid input.")
 
