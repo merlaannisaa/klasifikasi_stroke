@@ -178,15 +178,37 @@ elif menu == "Visualisasi":
     fig.update_layout(width=500, height=400)
     st.plotly_chart(fig)
 
-    # Menampilkan informasi tambahan: Recall, F1 Score, dan ROC Curve
-    classification_report_output = classification_report(y_test, y_pred)
-    st.write(f"### Classification Report")
-    st.text(classification_report_output)
+    # Menghitung recall, F1 score, dan ROC score
+    recall = recall_score(y_test, y_pred)
+    f1 = f1_score(y_test_stroke, y_pred)
+    roc_score = roc_auc_score(y_test, y_pred)
+    
+    # Membuat dataframe
+    metrics_df = pd.DataFrame({
+        "Metric": ["Accuracy", "Recall", "F1 Score", "ROC Score"],
+        "Test Data": [accuracy, recall, f1, roc_score]
 
-    # Menampilkan ROC curve
-    st.write("### Receiver Operating Characteristic (ROC) Curve")
-    plot_roc_curve(y_test, y_pred)
+    # Menampilkan dataframe
+    st.write("## Evaluation Metrics on Test Data")
+    st.write(metrics_df)
 
+    fpr, tpr, thresholds = roc_curve(y_test, y_prob)
+        auc = roc_auc_score(y_test, y_prob)
+
+        # Membuat kurva ROC
+        fig, ax = plt.subplots(figsize=(8, 6))
+        ax.plot(fpr, tpr, label=f'ROC curve (AUC = {auc:.2f})')
+        ax.plot([0, 1], [0, 1], 'k--')
+        ax.set_xlim([0.0, 1.0])
+        ax.set_ylim([0.0, 1.05])
+        ax.set_xlabel('False Positive Rate')
+        ax.set_ylabel('True Positive Rate')
+        ax.set_title('Receiver Operating Characteristic (ROC) Curve')
+        ax.legend(loc="lower right")
+
+        # Menampilkan kurva ROC di aplikasi Streamlit
+        st.pyplot(fig)
+    
 # Tambahkan kode berikut untuk meng-host aplikasi di Streamlit Sharing
 # if __name__ == "__main__":
     # st.write("""
