@@ -190,11 +190,10 @@ elif menu == "Visualisasi":
     st.write("### ROC AUC:", roc_score)
 
     fpr, tpr, thresholds = roc_curve(y_test, y_prob)
-    auc = roc_auc_score(y_test, y_prob)
 
     # Membuat kurva ROC
     fig, ax = plt.subplots(figsize=(8, 6))
-    ax.plot(fpr, tpr, label=f'ROC curve (AUC = {auc:.2f})')
+    ax.plot(fpr, tpr, label=f'ROC curve (AUC = {roc_score:.2f})')
     ax.plot([0, 1], [0, 1], 'k--')
     ax.set_xlim([0.0, 1.0])
     ax.set_ylim([0.0, 1.05])
