@@ -74,20 +74,20 @@ if menu == "Klasifikasi":
     
     age = st.text_input("Age")
     
-    hypertension = st.radio("Hypertension", ["No", "Yes"])
+    hypertension = st.selectbox("Hypertension", ["No", "Yes"])
     hypertension = 0 if hypertension == "No" else 1
     
-    heart_disease = st.radio("Heart Disease", ["No", "Yes"])
+    heart_disease = st.selectbox("Heart Disease", ["No", "Yes"])
     heart_disease = 0 if heart_disease == "No" else 1
     
-    ever_married = st.radio("Ever Married", ["No", "Yes"])
+    ever_married = st.selectbox("Ever Married", ["No", "Yes"])
     ever_married = 0 if ever_married == "No" else 1
     
     work_type_dict = {"Govt Job": 0, "Never Worked": 1, "Private": 2, "Self-employed": 3, "Children": 4}
-    work_type = st.radio("Work Type", list(work_type_dict.keys()))
+    work_type = st.selectbox("Work Type", list(work_type_dict.keys()))
     work_type = work_type_dict[work_type]
     
-    residence_type = st.radio("Residence Type", ["Rural", "Urban"])
+    residence_type = st.selectbox("Residence Type", ["Rural", "Urban"])
     residence_type = 0 if residence_type == "Rural" else 1
     
     avg_glucose_level = st.text_input("Average Glucose Level")
@@ -95,7 +95,7 @@ if menu == "Klasifikasi":
     bmi = st.text_input("BMI")
     
     smoking_status_dict = {"Unknown": 0, "Formerly Smoked": 1, "Never Smoked": 2, "Smokes": 3}
-    smoking_status = st.radio("Smoking Status", list(smoking_status_dict.keys()))
+    smoking_status = st.selectbox("Smoking Status", list(smoking_status_dict.keys()))
     smoking_status = smoking_status_dict[smoking_status]
     
     if st.button("Predict"):
