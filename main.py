@@ -30,7 +30,7 @@ def plot_stroke_risk(prediction):
     plt.figure(figsize=(5, 5))
     plt.pie(values, labels=labels, autopct='%1.1f%%', startangle=140)
     plt.title("Stroke Risk")
-    st.pyplot()
+    st.pyplot(plt)
 
 # Fungsi untuk membuat visualisasi akurasi dengan bar chart
 def plot_accuracy(accuracy):
@@ -41,7 +41,7 @@ def plot_accuracy(accuracy):
     plt.bar(labels, values)
     plt.ylabel("Accuracy")
     plt.title("Model Accuracy")
-    st.pyplot()
+    st.pyplot(plt)
     
 # Fungsi untuk membuat visualisasi ROC curve
 def plot_roc_curve(y_test, y_pred):
@@ -55,7 +55,7 @@ def plot_roc_curve(y_test, y_pred):
     plt.ylabel('True Positive Rate')
     plt.title('Receiver Operating Characteristic (ROC)')
     plt.legend(loc="lower right")
-    st.pyplot()
+    st.pyplot(plt)
 
 
 # Set page config
@@ -69,7 +69,7 @@ model = load_model()
 if menu == "Klasifikasi":
     st.subheader("Enter Patient Information")
       
-    gender = st.radio("Gender", ["Female", "Male"])
+    gender = st.sidebar("Gender", ["Female", "Male"])
     gender = 0 if gender == "Female" else 1
     
     age = st.text_input("Age")
