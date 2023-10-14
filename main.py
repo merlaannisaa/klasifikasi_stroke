@@ -6,7 +6,8 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from imblearn.combine import SMOTEENN
 from imblearn.over_sampling import SMOTE
-from sklearn.metrics import accuracy_score, confusion_matrix, plot_confusion_matrix
+from sklearn.metrics import accuracy_score, confusion_matrix
+from sklearn.metrics import plot_confusion_matrix
 
 # Fungsi untuk memuat model
 def load_model():
