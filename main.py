@@ -180,7 +180,7 @@ elif menu == "Visualisasi":
     st.plotly_chart(fig)
 
     # Menampilkan informasi tambahan: Recall, F1 Score, dan ROC Curve
-    classification_report_output = classification_report(y_test_stroke, y_pred)
+    classification_report_output = classification_report(y_test, y_pred)
     st.write(f"### Classification Report")
     st.text(classification_report_output)
 
