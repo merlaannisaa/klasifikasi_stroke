@@ -134,7 +134,7 @@ elif menu == "Confusion Matrix":
 
         # Mencetak jumlah data dalam set pelatihan dan pengujian
     st.write(f"Number of samples in Training Data: {len(X_train)}")
-    st.write(f"Number of samples in Testing Data: {len(X_test}")
+    st.write(f"Number of samples in Testing Data: {len(X_test)}")
 
     # Melakukan prediksi pada data pengujian
     y_pred = model.predict(X_test)
