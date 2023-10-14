@@ -183,7 +183,7 @@ elif menu == "Visualisasi":
     ax.legend(loc="lower right")
 
     # Menampilkan kurva ROC di aplikasi Streamlit
-    st.pyplot(fig)
+    st.pyplot(ax)
     
 # Tambahkan kode berikut untuk meng-host aplikasi di Streamlit Sharing
 # if __name__ == "__main__":
