@@ -44,13 +44,10 @@ def plot_accuracy(accuracy):
     st.pyplot()
     
 # Fungsi untuk membuat visualisasi ROC curve
-def plot_roc_curve(y_test, y_pred, y_train, y_pred_train):
+def plot_roc_curve(y_test, y_pred):
     fpr, tpr, thresholds = roc_curve(y_test, y_pred)
-    fpr_train, tpr_train, thresholds_train = roc_curve(y_train, y_pred_train)
-
     plt.figure(figsize=(8, 6))
     plt.plot(fpr, tpr, label='ROC curve (Test Data)')
-    plt.plot(fpr_train, tpr_train, label='ROC curve (Train Data)', linestyle='--')
     plt.plot([0, 1], [0, 1], 'k--')
     plt.xlim([0.0, 1.0])
     plt.ylim([0.0, 1.05])
@@ -186,7 +183,7 @@ elif menu == "Visualisasi":
 
     # Menampilkan ROC curve
     st.write("### Receiver Operating Characteristic (ROC) Curve")
-    plot_roc_curve(y_test, y_pred, y_train, y_pred_train)
+    plot_roc_curve(y_test, y_pred)
 
 # Tambahkan kode berikut untuk meng-host aplikasi di Streamlit Sharing
 if __name__ == "__main__":
