@@ -180,7 +180,7 @@ elif menu == "Visualisasi":
 
     # Menghitung recall, F1 score, dan ROC score
     recall = recall_score(y_test, y_pred)
-    f1 = f1_score(y_test_stroke, y_pred)
+    f1 = f1_score(y_test, y_pred)
     roc_score = roc_auc_score(y_test, y_pred)
     
     st.write("## Evaluation Metrics on Test Data")
