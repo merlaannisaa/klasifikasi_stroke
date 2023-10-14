@@ -142,7 +142,6 @@ elif menu == "Visualisasi":
 
     # Menampilkan visualisasi akurasi dengan bar chart
     st.write(f"## Model Accuracy on Test Data: {accuracy:.2%}")
-    plot_accuracy(accuracy)
 
     # Menampilkan confusion matrix
     conf_matrix = confusion_matrix(y_test, y_pred)
