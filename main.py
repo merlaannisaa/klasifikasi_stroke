@@ -132,6 +132,10 @@ elif menu == "Confusion Matrix":
     smoteenn = SMOTEENN(random_state=0, smote=SMOTE(sampling_strategy='auto', k_neighbors=36, random_state=0))
     resX_train, resY_train= smoteenn.fit_resample(X_train,y_train)
 
+        # Mencetak jumlah data dalam set pelatihan dan pengujian
+    st.write(f"Number of samples in Training Data: {len(X_train)}")
+    st.write(f"Number of samples in Testing Data: {len(X_test}")
+
     # Melakukan prediksi pada data pengujian
     y_pred = model.predict(X_test)
 
@@ -150,7 +154,7 @@ elif menu == "Confusion Matrix":
     fig.update_layout(width=500, height=400)
     st.plotly_chart(fig)
 
-        # Menghitung recall, F1 score, dan ROC curve
+    # Menghitung recall, F1 score, dan ROC curve
     recall = recall_score(y_test, y_pred)
     f1 = f1_score(y_test, y_pred)
     fpr, tpr, thresholds = roc_curve(y_test, model.predict_proba(X_test)[:, 1])
