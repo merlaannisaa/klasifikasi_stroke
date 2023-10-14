@@ -59,7 +59,7 @@ def plot_roc_curve(y_test, y_pred):
 
 
 # Set page config
-st.set_page_config(layout="wide")
+# st.set_page_config(layout="wide")
 
 st.title("Klasifikasi Stroke")
 
