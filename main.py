@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 from imblearn.combine import SMOTEENN
 from imblearn.over_sampling import SMOTE
 from sklearn.metrics import accuracy_score, confusion_matrix
-from sklearn.metrics import plot_confusion_matrix
+import plotly.figure_factory as ff
 from sklearn.metrics import recall_score, f1_score, roc_curve, roc_auc_score
 
 # Fungsi untuk memuat model
@@ -143,9 +143,12 @@ elif menu == "Confusion Matrix":
     plot_accuracy(accuracy)
 
     # Menampilkan confusion matrix
+    conf_matrix = confusion_matrix(y_test, y_pred)
     st.write(f"### Confusion Matrix")
-    plot_confusion_matrix(model, X_test, y_test)
-    st.pyplot()
+    # Menggunakan plotly untuk membuat confusion matrix
+    fig = ff.create_annotated_heatmap(conf_matrix, x=['Predicted 0', 'Predicted 1'], y=['Actual 0', 'Actual 1'], colorscale='Viridis')
+    fig.update_layout(width=500, height=400)
+    st.plotly_chart(fig)
 
         # Menghitung recall, F1 score, dan ROC curve
     recall = recall_score(y_test, y_pred)
