@@ -69,7 +69,7 @@ model = load_model()
 if menu == "Klasifikasi":
     st.subheader("Enter Patient Information")
       
-    gender = st.sidebar("Gender", ["Female", "Male"])
+    gender = st.selectbox("Gender", ["Female", "Male"])
     gender = 0 if gender == "Female" else 1
     
     age = st.text_input("Age")
