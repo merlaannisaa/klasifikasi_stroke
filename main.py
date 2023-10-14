@@ -9,6 +9,7 @@ from imblearn.over_sampling import SMOTE
 from sklearn.metrics import accuracy_score, confusion_matrix
 import plotly.figure_factory as ff
 from sklearn.metrics import recall_score, f1_score, roc_curve, roc_auc_score
+from sklearn.metrics import classification_report
 
 # Fungsi untuk memuat model
 def load_model():
@@ -41,6 +42,24 @@ def plot_accuracy(accuracy):
     plt.ylabel("Accuracy")
     plt.title("Model Accuracy")
     st.pyplot()
+    
+# Fungsi untuk membuat visualisasi ROC curve
+def plot_roc_curve(y_test, y_pred, y_train, y_pred_train):
+    fpr, tpr, thresholds = roc_curve(y_test, y_pred)
+    fpr_train, tpr_train, thresholds_train = roc_curve(y_train, y_pred_train)
+
+    plt.figure(figsize=(8, 6))
+    plt.plot(fpr, tpr, label='ROC curve (Test Data)')
+    plt.plot(fpr_train, tpr_train, label='ROC curve (Train Data)', linestyle='--')
+    plt.plot([0, 1], [0, 1], 'k--')
+    plt.xlim([0.0, 1.0])
+    plt.ylim([0.0, 1.05])
+    plt.xlabel('False Positive Rate')
+    plt.ylabel('True Positive Rate')
+    plt.title('Receiver Operating Characteristic (ROC)')
+    plt.legend(loc="lower right")
+    st.pyplot()
+
 
 # Set page config
 st.set_page_config(layout="wide")
@@ -160,37 +179,15 @@ elif menu == "Visualisasi":
     fig.update_layout(width=500, height=400)
     st.plotly_chart(fig)
 
-    # Menghitung recall, F1 score, dan ROC curve
-    recall = recall_score(y_test, y_pred)
-    f1 = f1_score(y_test, y_pred)
-    fpr, tpr, thresholds = roc_curve(y_test,y_pred)
-    auc = roc_auc_score(y_test_stroke, y_pred)
-
-    # Menghitung FN, TP, TN, FP
-    tn, fp, fn, tp = confusion_matrix(y_test, y_pred).ravel()
-
-    # Menampilkan metrik
-    st.write(f"#### Recall: {recall:.2f}")
-    st.write(f"#### F1 Score: {f1:.2f}")
-    st.write(f"#### Area Under ROC Curve (AUC): {auc:.2f}")
-    st.write(f"#### True Positives (TP): {tp}")
-    st.write(f"#### True Negatives (TN): {tn}")
-    st.write(f"#### False Positives (FP): {fp}")
-    st.write(f"#### False Negatives (FN): {fn}")
+    # Menampilkan informasi tambahan: Recall, F1 Score, dan ROC Curve
+    classification_report_output = classification_report(y_test_stroke, y_pred)
+    st.write(f"### Classification Report")
+    st.text(classification_report_output)
 
     # Menampilkan ROC curve
-    st.write(f"### ROC Curve")
-    plt.figure(figsize=(8, 6))
-    plt.plot(fpr, tpr, label=f'AUC = {auc:.2f}')
-    plt.plot([0, 1], [0, 1], 'k--')
-    plt.xlim([0.0, 1.0])
-    plt.ylim([0.0, 1.05])
-    plt.xlabel('False Positive Rate')
-    plt.ylabel('True Positive Rate')
-    plt.title('Receiver Operating Characteristic (ROC) Curve')
-    plt.legend(loc="lower right")
-    st.pyplot()
-    
+    st.write("### Receiver Operating Characteristic (ROC) Curve")
+    plot_roc_curve(y_test, y_pred, y_train, y_pred_train)
+
 # Tambahkan kode berikut untuk meng-host aplikasi di Streamlit Sharing
 if __name__ == "__main__":
     st.write("""
