@@ -162,7 +162,7 @@ elif menu == "Visualisasi":
     metrics = ["Accuracy", "Recall", "F1 Score"]
     values = [accuracy, recall, f1]
 
-    plt.figure(figsize=(8, 6))
+    plt.figure(figsize=(6, 4))
     plt.bar(metrics, values)
     plt.title("Evaluation Metrics on Test Data")
     plt.xlabel("Metrics")
