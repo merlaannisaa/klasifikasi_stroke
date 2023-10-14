@@ -101,7 +101,7 @@ if menu == "Prediction":
 elif menu == "Confusion Matrix":
     st.subheader("Confusion Matrix")
     # Memuat dataset
-    dataset = pd.read_csv('stroke_dataset.csv')
+    df = pd.read_csv('stroke_dataset.csv')
     
     # Melakukan balanced split
     # Memisahkan dataset menjadi dua berdasarkan kelas
