@@ -59,7 +59,7 @@ def plot_roc_curve(y_test, y_pred):
 
 
 # Set page config
-# st.set_page_config(layout="wide")
+st.set_page_config(layout="wide")
 
 st.title("Klasifikasi Stroke")
 
@@ -67,18 +67,28 @@ st.title("Klasifikasi Stroke")
 menu = st.sidebar.radio("Navigation", ["Klasifikasi", "Visualisasi"])
 model = load_model()
 if menu == "Klasifikasi":
-    st.subheader("Enter Patient Information")
-      
+    st.subheader("Input Data")
+
+    # Membagi layar menjadi dua kolom
+    col1, col2 = st.beta_columns(2)
+
+    # Input selectbox di kolom pertama
+    with col1:
     gender = st.selectbox("Gender", ["Female", "Male"])
     gender = 0 if gender == "Female" else 1
-    
-    age = st.text_input("Age")
-    
-    hypertension = st.selectbox("Hypertension", ["No", "Yes"])
-    hypertension = 0 if hypertension == "No" else 1
-    
     heart_disease = st.selectbox("Heart Disease", ["No", "Yes"])
     heart_disease = 0 if heart_disease == "No" else 1
+    
+    # Input selectbox di kolom kedua
+    with col2:
+    hypertension = st.selectbox("Hypertension", ["No", "Yes"])
+    hypertension = 0 if hypertension == "No" else 1
+    heart_disease = st.selectbox("Heart Disease", ["No", "Yes"])
+    heart_disease = 0 if heart_disease == "No" else 1
+        
+    age = st.text_input("Age")
+    
+
     
     ever_married = st.selectbox("Ever Married", ["No", "Yes"])
     ever_married = 0 if ever_married == "No" else 1
