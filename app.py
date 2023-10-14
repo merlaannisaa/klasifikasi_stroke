@@ -19,10 +19,12 @@ def plot_stroke_risk(prediction):
     labels = ["Low Risk", "High Risk"]
     values = [prediction[0], 1 - prediction[0]]
 
-    plt.figure(figsize=(5, 5))
-    plt.pie(values, labels=labels, autopct='%1.1f%%', startangle=140)
-    plt.title("Stroke Risk")
-    st.pyplot()
+    fig, ax = plt.subplots(figsize=(5, 5))
+    ax.pie(values, labels=labels, autopct='%1.1f%%', startangle=140)
+    ax.set_title("Stroke Risk")
+
+    # Menampilkan gambar Matplotlib di Streamlit
+    st.pyplot(fig)
 
 # Set page config
 st.set_page_config(layout="wide")
@@ -81,19 +83,6 @@ if st.button("Predict"):
         plot_stroke_risk(prediction)
     except ValueError:
         st.error("Invalid input. Please check the values you entered.")
-
-# Fungsi untuk membuat visualisasi
-def plot_stroke_risk(prediction):
-    labels = ["Low Risk", "High Risk"]
-    values = [prediction[0], 1 - prediction[0]]
-
-    fig, ax = plt.subplots(figsize=(5, 5))
-    ax.pie(values, labels=labels, autopct='%1.1f%%', startangle=140)
-    ax.set_title("Stroke Risk")
-
-    # Menampilkan gambar Matplotlib di Streamlit
-    st.pyplot(fig)
-
 
 # Tambahkan kode berikut untuk meng-host aplikasi di Streamlit Sharing
 if __name__ == "__main__":
