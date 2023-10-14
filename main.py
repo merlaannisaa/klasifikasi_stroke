@@ -91,7 +91,7 @@ if menu == "Klasifikasi":
                 st.error("Invalid input.")
 
 elif menu == "Visualisasi":
-    st.subheader("Visualisasi")
+    # st.subheader("Visualisasi")
     # Memuat dataset
     df = pd.read_csv('stroke_dataset.csv')
     
@@ -140,9 +140,6 @@ elif menu == "Visualisasi":
     # Menghitung akurasi model
     accuracy = accuracy_score(y_test, y_pred)
 
-    # Menampilkan visualisasi akurasi dengan bar chart
-    st.write(f"## Model Accuracy on Test Data: {accuracy:.2%}")
-
     # Menampilkan confusion matrix
     conf_matrix = confusion_matrix(y_test, y_pred)
     st.write(f"### Confusion Matrix")
@@ -161,11 +158,21 @@ elif menu == "Visualisasi":
     st.write("### Recall:", recall)
     st.write("### F1 Score:", f1)
     st.write("### ROC AUC:", roc_score)
+    
+    metrics = ["Accuracy", "Recall", "F1 Score"]
+    values = [accuracy, recall, f1]
+
+    plt.figure(figsize=(8, 6))
+    plt.bar(metrics, values)
+    plt.title("Evaluation Metrics on Test Data")
+    plt.xlabel("Metrics")
+    plt.ylabel("Values")
+    st.pyplot(plt)
 
     fpr, tpr, thresholds = roc_curve(y_test, y_prob)
 
     # Membuat kurva ROC
-    fig, ax = plt.subplots(figsize=(8, 6))
+    fig, ax = plt.subplots(figsize=(6, 4))
     ax.plot(fpr, tpr, label=f'ROC curve (AUC = {roc_score:.2f})')
     ax.plot([0, 1], [0, 1], 'k--')
     ax.set_xlim([0.0, 1.0])
