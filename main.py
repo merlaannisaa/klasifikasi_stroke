@@ -45,12 +45,12 @@ def plot_accuracy(accuracy):
 # Set page config
 st.set_page_config(layout="wide")
 
-st.title("Stroke Prediction App")
+st.title("Klasifikasi Stroke")
 
 # Submenu untuk memilih halaman
-menu = st.sidebar.radio("Navigation", ["Prediction", "Confusion Matrix"])
+menu = st.sidebar.radio("Navigation", ["Klasifikasi", "Visualisasi"])
 model = load_model()
-if menu == "Prediction":
+if menu == "Klasifikasi":
     st.subheader("Enter Patient Information")
       
     gender = st.radio("Gender", ["Female", "Male"])
@@ -98,8 +98,8 @@ if menu == "Prediction":
             except ValueError:
                 st.error("Invalid input. Please check the values you entered.")
 
-elif menu == "Confusion Matrix":
-    st.subheader("Confusion Matrix")
+elif menu == "Visualisasi":
+    st.subheader("Visualisasi")
     # Memuat dataset
     df = pd.read_csv('stroke_dataset.csv')
     
