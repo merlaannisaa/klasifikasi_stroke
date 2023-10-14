@@ -163,8 +163,8 @@ elif menu == "Visualisasi":
     # Menghitung recall, F1 score, dan ROC curve
     recall = recall_score(y_test, y_pred)
     f1 = f1_score(y_test, y_pred)
-    fpr, tpr, thresholds = roc_curve(y_test, model.predict_proba(X_test)[:, 1])
-    auc = roc_auc_score(y_test_stroke, model.predict_proba(X_test)[:, 1])
+    fpr, tpr, thresholds = roc_curve(y_test,y_pred)
+    auc = roc_auc_score(y_test_stroke, y_pred)
 
     # Menghitung FN, TP, TN, FP
     tn, fp, fn, tp = confusion_matrix(y_test, y_pred).ravel()
