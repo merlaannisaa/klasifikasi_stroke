@@ -136,9 +136,15 @@ elif menu == "Confusion Matrix":
     st.write(f"Number of samples in Training Data: {len(X_train)}")
     st.write(f"Number of samples in Testing Data: {len(X_test)}")
 
-    # Melakukan prediksi pada data pengujian
-    y_pred = model.predict(X_test)
+    # Mengubah threshold menjadi 0.1
+    threshold = 0.1
 
+    # Mengambil probabilitas prediksi
+    y_prob = model.predict_proba(X_test)[:, 1]
+
+    # Menggunakan threshold untuk membuat prediksi berdasarkan probabilitas
+    y_pred = (y_prob > threshold).astype(int)
+    
     # Menghitung akurasi model
     accuracy = accuracy_score(y_test, y_pred)
 
