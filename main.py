@@ -172,7 +172,7 @@ elif menu == "Visualisasi":
     fpr, tpr, thresholds = roc_curve(y_test, y_prob)
 
     # Membuat kurva ROC
-    fig, ax = plt.subplots(figsize=(20, 12))
+    fig, ax = plt.subplots(figsize=(20, 12), dpi=100)
     ax.plot(fpr, tpr, label=f'ROC curve (AUC = {roc_score:.2f})')
     ax.plot([0, 1], [0, 1], 'k--')
     ax.set_xlim([0.0, 1.0])
