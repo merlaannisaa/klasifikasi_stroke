@@ -169,7 +169,7 @@ elif menu == "Visualisasi":
     plt.ylabel("Values")
     st.pyplot(plt)
 
-    fpr, tpr, thresholds = roc_curve(y_test, y_prob)
+    fpr, tpr, thresholds = roc_curve(y_test, y_pred)
 
     # Membuat kurva ROC
     fig, ax = plt.subplots(figsize=(20, 12), dpi=500)
