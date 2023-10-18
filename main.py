@@ -213,7 +213,7 @@ elif menu ==  "Klasifikasi":
                     'heart_disease': heart_disease,
                     'ever_married': ever_married,
                     'work_type': work_type,
-                    'residence_type': residence_type,
+                    'Residence_type': residence_type,
                     'avg_glucose_level': avg_glucose_level,
                     'bmi': bmi,
                     'smoking_status': smoking_status
