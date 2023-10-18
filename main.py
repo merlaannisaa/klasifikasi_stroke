@@ -115,7 +115,7 @@ if menu == "Visualisasi":
     conf_matrix = confusion_matrix(y_test, y_pred)
     st.write(f"### Confusion Matrix")
     # Menggunakan plotly untuk membuat confusion matrix
-    fig = ff.create_annotated_heatmap(conf_matrix, x=['Predicted 0', 'Predicted 1'], y=['Actual 1', 'Actual 0'], colorscale='Viridis')
+    fig = ff.create_annotated_heatmap(conf_matrix, x=['Predicted 0', 'Predicted 1'], y=['Actual 0', 'Actual 1'], colorscale='Viridis')
     fig.update_layout(width=500, height=400)
     st.plotly_chart(fig)
 
