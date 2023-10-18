@@ -28,69 +28,9 @@ st.set_page_config(layout="wide")
 st.title("Klasifikasi Stroke")
 
 # Submenu untuk memilih halaman
-menu = st.sidebar.radio("Navigation", ["Klasifikasi", "Visualisasi"])
+menu = st.sidebar.radio("Navigation", ["Visualisasi", "Klasifikasi"])
 model = load_model()
-if menu == "Klasifikasi":
-    st.subheader("Input Data")
-
-    #membagi kolom
-    col1, col2 = st.columns(2)
-
-    with col1 :
-        gender = st.selectbox("Gender", ["Female", "Male"])
-        gender = 0 if gender == "Female" else 1
-
-    with col2 :
-        age = st.text_input("Age")
-
-    with col1 :
-        hypertension = st.selectbox("Hypertension", ["No", "Yes"])
-        hypertension = 0 if hypertension == "No" else 1
-
-    with col2 :
-        heart_disease = st.selectbox("Heart Disease", ["No", "Yes"])
-        heart_disease = 0 if heart_disease == "No" else 1
-
-    with col1 :
-        ever_married = st.selectbox("Ever Married", ["No", "Yes"])
-        ever_married = 0 if ever_married == "No" else 1
-
-    with col2:
-        work_type_dict = {"Govt Job": 0, "Never Worked": 1, "Private": 2, "Self-employed": 3, "Children": 4}
-        work_type = st.selectbox("Work Type", list(work_type_dict.keys()))
-        work_type = work_type_dict[work_type]
-
-    with col1 :
-        residence_type = st.selectbox("Residence Type", ["Rural", "Urban"])
-        residence_type = 0 if residence_type == "Rural" else 1
-
-    with col2:
-        avg_glucose_level = st.text_input("Average Glucose Level")
-
-    with col1 :
-        bmi = st.text_input("BMI")
-
-    with col2:
-        smoking_status_dict = {"Unknown": 0, "Formerly Smoked": 1, "Never Smoked": 2, "Smokes": 3}
-        smoking_status = st.selectbox("Smoking Status", list(smoking_status_dict.keys()))
-        smoking_status = smoking_status_dict[smoking_status]
-    
-    if st.button("Predict"):
-            try:
-                # ... (input processing)
-                input_data = [[gender, age, hypertension, heart_disease, ever_married, work_type, residence_type, avg_glucose_level, bmi, smoking_status]]
-                prediction = predict_stroke(model, input_data)
-                
-                st.write("## Prediction Result")
-                if prediction[0] == 1:
-                    st.error("Risiko stroke tinggi!")
-                else:
-                    st.success("Risiko stroke rendah!")
-   
-            except ValueError:
-                st.error("Invalid input.")
-
-elif menu == "Visualisasi":
+if menu == "Visualisasi":
     # st.subheader("Visualisasi")
     # Memuat dataset
     df = pd.read_csv('stroke_dataset.csv')
@@ -125,7 +65,7 @@ elif menu == "Visualisasi":
     resX_train, resY_train= smoteenn.fit_resample(X_train,y_train)
 
     # Mencetak jumlah data dalam set pelatihan dan pengujian
-    st.write(f"Number of samples in Training Data: {len(X_train)}")
+    st.write(f"Number of samples in Training Data: {len(resX_train)}")
     st.write(f"Number of samples in Testing Data: {len(X_test)}")
 
     # Mengubah threshold menjadi 0.1
@@ -184,7 +124,73 @@ elif menu == "Visualisasi":
 
     # Menampilkan kurva ROC di aplikasi Streamlit
     st.pyplot(fig)
+
+elif menu ==  "Klasifikasi":
+    st.subheader("Input Data")
+
+    #membagi kolom
+    col1, col2 = st.columns(2)
+
+    with col1 :
+        gender = st.selectbox("Gender", ["Female", "Male"])
+        gender = 0 if gender == "Female" else 1
+
+    with col2 :
+        age = st.text_input("Age")
+
+    with col1 :
+        hypertension = st.selectbox("Hypertension", ["No", "Yes"])
+        hypertension = 0 if hypertension == "No" else 1
+
+    with col2 :
+        heart_disease = st.selectbox("Heart Disease", ["No", "Yes"])
+        heart_disease = 0 if heart_disease == "No" else 1
+
+    with col1 :
+        ever_married = st.selectbox("Ever Married", ["No", "Yes"])
+        ever_married = 0 if ever_married == "No" else 1
+
+    with col2:
+        work_type_dict = {"Govt Job": 0, "Never Worked": 1, "Private": 2, "Self-employed": 3, "Children": 4}
+        work_type = st.selectbox("Work Type", list(work_type_dict.keys()))
+        work_type = work_type_dict[work_type]
+
+    with col1 :
+        residence_type = st.selectbox("Residence Type", ["Rural", "Urban"])
+        residence_type = 0 if residence_type == "Rural" else 1
+
+    with col2:
+        avg_glucose_level = st.text_input("Average Glucose Level")
+
+    with col1 :
+        bmi = st.text_input("BMI")
+
+    with col2:
+        smoking_status_dict = {"Unknown": 0, "Formerly Smoked": 1, "Never Smoked": 2, "Smokes": 3}
+        smoking_status = st.selectbox("Smoking Status", list(smoking_status_dict.keys()))
+        smoking_status = smoking_status_dict[smoking_status]
     
+    if st.button("Predict"):
+            try:
+                # ... (input processing)
+                input_data = [[gender, age, hypertension, heart_disease, ever_married, work_type, residence_type, avg_glucose_level, bmi, smoking_status]]
+                prediction = predict_stroke(model, input_data)
+                
+                st.write("## Prediction Result")
+                if prediction[0] == 1:
+                    st.error("Risiko stroke tinggi!")
+                else:
+                    st.success("Risiko stroke rendah!")
+
+                X_test = X_test()
+                y_test = y_test()
+                acc = accuracy_score(y_test, prediction)
+                st.write (f"Accuracy: {acc*100:.2f}%")
+   
+            except ValueError:
+                st.error("Invalid input.")
+
+
 # Tambahkan kode berikut untuk meng-host aplikasi di Streamlit Sharing
 # if __name__ == "__main__":
     # st.write("""
