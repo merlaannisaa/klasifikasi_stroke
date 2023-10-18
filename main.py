@@ -204,7 +204,20 @@ elif menu ==  "Klasifikasi":
     if st.button("Predict"):
             try:
                 # ... (input processing)
-                input_data = [[gender, age, hypertension, heart_disease, ever_married, work_type, residence_type, avg_glucose_level, bmi, smoking_status]]
+                # input_data = [[gender, age, hypertension, heart_disease, ever_married, work_type, residence_type, avg_glucose_level, bmi, smoking_status]]
+                #         # Buat kamus data dengan feature_names
+                input_data = {
+                    'gender': gender,
+                    'age': age,
+                    'hypertension': hypertension,
+                    'heart_disease': heart_disease,
+                    'ever_married': ever_married,
+                    'work_type': work_type,
+                    'residence_type': residence_type,
+                    'avg_glucose_level': avg_glucose_level,
+                    'bmi': bmi,
+                    'smoking_status': smoking_status
+                }
                 prediction = predict_stroke(model, input_data)
                 
                 st.write("## Prediction Result")
@@ -212,8 +225,12 @@ elif menu ==  "Klasifikasi":
                     st.error("Risiko stroke tinggi!")
                 else:
                     st.success("Risiko stroke rendah!")
-   
-            except ValueError:
+
+                                # Gantilah new_data dengan data baru yang ingin dievaluasi
+                silhouette_avg = silhouette_score(input_data, prediction)
+    
+                st.write(f"Silhouette Score: {silhouette_avg:.2f}")
+                except ValueError:
                 st.error("Invalid input.")
 
 
