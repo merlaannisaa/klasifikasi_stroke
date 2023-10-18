@@ -22,6 +22,37 @@ def predict_stroke(model, input_data):
     prediction = model.predict(input_data)
     return prediction
 
+df = pd.read_csv('stroke_dataset.csv')
+    
+# Melakukan balanced split
+# Memisahkan dataset menjadi dua berdasarkan kelas
+stroke_class = df[df['stroke'] == 1]  # Memisahkan data dengan kelas 1 (stroke)
+non_stroke_class = df[df['stroke'] == 0]  # Memisahkan data dengan kelas 0 (tidak stroke)
+    
+# Memisahkan stroke_class menjadi data pelatihan dan pengujian dengan perbandingan 70:30
+X_stroke = stroke_class.drop(columns=['stroke'])
+y_stroke = stroke_class['stroke']
+    
+X_train_stroke, X_test_stroke, y_train_stroke, y_test_stroke = train_test_split(X_stroke, y_stroke, test_size=0.3, random_state=0)
+    
+X_non_stroke = non_stroke_class.drop(columns=['stroke'])
+y_non_stroke = non_stroke_class['stroke']
+    
+# Menggunakan len(X_test_stroke) untuk menentukan jumlah data pengujian yang sama dengan stroke_class
+X_train_non_stroke, X_test_non_stroke, y_train_non_stroke, y_test_non_stroke = train_test_split(
+X_non_stroke, y_non_stroke, test_size=len(X_test_stroke), random_state=0)
+    
+# Menggabungkan data pelatihan dan pengujian dari kedua kelas (stroke dan non-stroke)
+X_train = pd.concat([X_train_stroke, X_train_non_stroke])
+y_train = pd.concat([y_train_stroke, y_train_non_stroke])
+    
+X_test = pd.concat([X_test_stroke, X_test_non_stroke])
+y_test = pd.concat([y_test_stroke, y_test_non_stroke])
+    
+# Melakukan SMOTE-ENN untuk oversampling
+smoteenn = SMOTEENN(random_state=0, smote=SMOTE(sampling_strategy='auto', k_neighbors=36, random_state=0))
+resX_train, resY_train= smoteenn.fit_resample(X_train,y_train)
+
 # Set page config
 st.set_page_config(layout="wide")
 
@@ -182,10 +213,6 @@ elif menu ==  "Klasifikasi":
                 else:
                     st.success("Risiko stroke rendah!")
 
-                x = pd.read_csv('X_test.csv')
-                y = pd.read_csv('y_test.csv')
-                x = x.to_dense()
-                y = y.to_dense()
                 acc = accuracy_score(y_test, prediction)
                 st.write (f"Accuracy: {acc*100:.2f}%")
    
