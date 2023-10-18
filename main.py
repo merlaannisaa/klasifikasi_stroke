@@ -226,9 +226,6 @@ elif menu ==  "Klasifikasi":
                 else:
                     st.success("Risiko stroke rendah!")
 
-                silhouette_avg = silhouette_score(X_test, prediction)
-    
-                st.write(f"Silhouette Score: {silhouette_avg:.2f}")
             except ValueError:
                 st.error("Invalid input.")
 
