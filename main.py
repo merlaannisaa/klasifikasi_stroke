@@ -213,7 +213,8 @@ elif menu ==  "Klasifikasi":
                 else:
                     st.success("Risiko stroke rendah!")
 
-                # acc = accuracy_score(y_test, prediction)
+                
+                # acc = accuracy_score(input_data, prediction)
                 # st.write (f"Accuracy: {acc*100:.2f}%")
    
             except ValueError:
