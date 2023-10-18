@@ -214,8 +214,8 @@ elif menu ==  "Klasifikasi":
                     st.success("Risiko stroke rendah!")
 
                 
-                # acc = accuracy_score(input_data, prediction)
-                # st.write (f"Accuracy: {acc*100:.2f}%")
+                acc = accuracy_score(input_data, prediction)
+                st.write (f"Accuracy: {acc*100:.2f}%")
    
             except ValueError:
                 st.error("Invalid input.")
