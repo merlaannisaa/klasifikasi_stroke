@@ -204,20 +204,8 @@ elif menu ==  "Klasifikasi":
     if st.button("Predict"):
             try:
                 # ... (input processing)
-                # input_data = [[gender, age, hypertension, heart_disease, ever_married, work_type, residence_type, avg_glucose_level, bmi, smoking_status]]
+                input_data = [[gender, age, hypertension, heart_disease, ever_married, work_type, residence_type, avg_glucose_level, bmi, smoking_status]]
                 #         # Buat kamus data dengan feature_names
-                input_data = {
-                    'gender': gender,
-                    'age': age,
-                    'hypertension': hypertension,
-                    'heart_disease': heart_disease,
-                    'ever_married': ever_married,
-                    'work_type': work_type,
-                    'Residence_type': residence_type,
-                    'avg_glucose_level': avg_glucose_level,
-                    'bmi': bmi,
-                    'smoking_status': smoking_status
-                }
                 prediction = predict_stroke(model, input_data)
                 
                 st.write("## Prediction Result")
