@@ -182,8 +182,8 @@ elif menu ==  "Klasifikasi":
                 else:
                     st.success("Risiko stroke rendah!")
 
-                X_test = X_test
-                y_test = y_test
+                X_test = pd.read_csv('X_test.csv')
+                y_test = pd.read_csv('y_test.csv')
                 acc = accuracy_score(y_test, prediction)
                 st.write (f"Accuracy: {acc*100:.2f}%")
    
