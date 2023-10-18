@@ -230,7 +230,7 @@ elif menu ==  "Klasifikasi":
                 silhouette_avg = silhouette_score(input_data, prediction)
     
                 st.write(f"Silhouette Score: {silhouette_avg:.2f}")
-                except ValueError:
+            except ValueError:
                 st.error("Invalid input.")
 
 
