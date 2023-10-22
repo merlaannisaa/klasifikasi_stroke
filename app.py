@@ -167,7 +167,7 @@ elif menu ==  "Klasifikasi":
         gender = 0 if gender == "Female" else 1
 
     with col2 :
-        age = st.text_input("Age")
+        age = st.number_input("Age")
 
     with col1 :
         hypertension = st.selectbox("Hypertension", ["No", "Yes"])
@@ -191,10 +191,10 @@ elif menu ==  "Klasifikasi":
         residence_type = 0 if residence_type == "Rural" else 1
 
     with col2:
-        avg_glucose_level = st.text_input("Average Glucose Level")
+        avg_glucose_level = st.number_input("Average Glucose Level")
 
     with col1 :
-        bmi = st.text_input("BMI")
+        bmi = st.number_input("BMI")
 
     with col2:
         smoking_status_dict = {"Unknown": 0, "Formerly Smoked": 1, "Never Smoked": 2, "Smokes": 3}
@@ -206,6 +206,9 @@ elif menu ==  "Klasifikasi":
                 # ... (input processing)
                 input_data = [[gender, age, hypertension, heart_disease, ever_married, work_type, residence_type, avg_glucose_level, bmi, smoking_status]]
                 input_df = pd.DataFrame(input_data, columns=['gender', 'age', 'hypertension', 'heart_disease', 'ever_married', 'work_type', 'Residence_type', 'avg_glucose_level', ' bmi', 'smoking_status'])
+                # Menampilkan DataFrame hasil
+                st.subheader("Data Input:")
+                st.write(input_df)
                 
                 prediction = model.predict(model, input_df)
                 
