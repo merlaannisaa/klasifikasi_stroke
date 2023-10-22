@@ -219,13 +219,20 @@ elif menu ==  "Klasifikasi":
                 if st.sidebar.button("Predict"):
                     prediction = model.predict(input_data)
                     file["Prediction"] = prediction
+                    # Visualisasi hasil prediksi dalam bentuk pie chart
                     st.write("## Visualisasi Hasil Prediksi")
                     prediction_counts = file['Prediction'].value_counts()
-                    labels = prediction_counts.index
-                    sizes = prediction_counts.values
+                    labels = ['Kelas 0', 'Kelas 1']
+                    sizes = [prediction_counts.get(0, 0), prediction_counts.get(1, 0)]
+                    total_data = sum(sizes)
+                    percentages = [(size / total_data) * 100 for size in sizes]
+                    
                     fig1, ax1 = plt.subplots()
                     ax1.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90)
                     ax1.axis('equal')  # Lingkaran yang sama
+                    st.write(f"Jumlah Data: {total_data}")
+                    st.write(f"Jumlah Data Kelas 0: {sizes[0]} ({percentages[0]:.1f}%)")
+                    st.write(f"Jumlah Data Kelas 1: {sizes[1]} ({percentages[1]:.1f}%)")
                     st.pyplot(fig1)
                     
                     st.write ("Hasil Prediksi Pada Data")
