@@ -197,7 +197,7 @@ elif menu ==  "Klasifikasi":
                 except ValueError:
                     st.error("Invalid input.")
     elif input_type == "File Input":
-        uploaded_file = st.sidebar.file_uploader("Upload File", type=["csv,"xls","xlsx"])
+        uploaded_file = st.sidebar.file_uploader("Upload File", type=["csv","xls","xlsx"])
 
         if uploaded_file is not None:
             st.sidebar.write("Upload Success")
