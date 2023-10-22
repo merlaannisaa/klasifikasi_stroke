@@ -69,7 +69,7 @@ st.set_page_config(layout="wide")
 st.title("Klasifikasi Stroke")
 
 # Submenu untuk memilih halaman
-menu = st.sidebar.radio("Navigation", ["Visualisasi", "Klasifikasi"])
+menu = st.sidebar.selectbox("Navigation", ["Visualisasi", "Klasifikasi"])
 if menu == "Visualisasi":
     # st.subheader("Visualisasi")
     # Mencetak jumlah data dalam set pelatihan dan pengujian
