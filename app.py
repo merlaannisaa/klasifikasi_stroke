@@ -178,9 +178,9 @@ elif menu ==  "Klasifikasi":
                     input_df = pd.DataFrame(input_data, columns=["gender", "age", "hypertension", "heart_disease", "ever_married", "work_type", "Residence_type", "avg_glucose_level", "bmi", "smoking_status"])
     
                     prediction = model.predict(input_data)
-
+                    
                     # Menampilkan data input pengguna
-                    st.write(## "Data Input")
+                    st.write("### Data Input Pengguna")
                     st.write("Gender:", gender)
                     st.write("Age:", age)
                     st.write("Hypertension:", hypertension)
