@@ -60,7 +60,7 @@ st.title("Klasifikasi Stroke")
 
 # Submenu untuk memilih halaman
 menu = st.sidebar.radio("Navigation", ["Visualisasi", "Klasifikasi"])
-model = load_model()
+# model = load_model()
 if menu == "Visualisasi":
     # st.subheader("Visualisasi")
     # Memuat dataset
