@@ -205,6 +205,7 @@ elif menu ==  "Klasifikasi":
             file = pd.read_csv(uploaded_file)
             
             lab_enc = LabelEncoder()
+            for x in file.select_dtypes(include='object'):        
             lab_enc_data= file.loc[:,['gender','ever_married','Residence_type','work_type','smoking_status']]
             for x in lab_enc_data.columns:
                 lab_enc_data[x]=lab_enc.fit_transform(lab_enc_data[x])
