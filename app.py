@@ -206,7 +206,7 @@ elif menu ==  "Klasifikasi":
             required_columns = ['gender', 'ever_married', 'Residence_type', 'work_stype', 'smoking_status']
             missing_columns = [col for col in required_columns if col not in file.columns]
             if missing_columns :
-            st.error(f"Kolom_kolom berikut tidak ditemukan dalam file: {', '.join(missing_columns)}'")
+                st.error(f"Kolom_kolom berikut tidak ditemukan dalam file: {', '.join(missing_columns)}'")
             else:
                 lab_enc = LabelEncoder()      
                 lab_enc_data= file[required_columns]
