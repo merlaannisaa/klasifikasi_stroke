@@ -205,18 +205,19 @@ elif menu ==  "Klasifikasi":
             try:
                 # ... (input processing)
                 input_data = [[gender, age, hypertension, heart_disease, ever_married, work_type, residence_type, avg_glucose_level, bmi, smoking_status]]
-                #         # Buat kamus data dengan feature_names
-                prediction = model.predict(input_data)
+                input_df = pd.DataFrame(input_data, columns=['gender', 'age', 'hypertension, 'heart_disease, 'ever_married', 'work_type', 'Residence_type', 'avg_glucose_level', ' bmi', 'smoking_status'])
+                
+                prediction = model.predict(input_df)
                 
                 st.write("## Prediction Result")
+                st.subheader('Data Input:')
+                    st.write(input_df)
                 if prediction[0] == 1:
                     st.error("Risiko stroke tinggi!")
                 else:
                     st.success("Risiko stroke rendah!")
 
-            except ValueError:
-                st.error("Invalid input.")
-
+    
 
 # Tambahkan kode berikut untuk meng-host aplikasi di Streamlit Sharing
 # if __name__ == "__main__":
