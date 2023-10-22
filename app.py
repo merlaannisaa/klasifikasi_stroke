@@ -196,6 +196,7 @@ elif menu ==  "Klasifikasi":
             
                 except ValueError:
                     st.error("Invalid input.")
+                    
     elif input_type == "File Input":
         uploaded_file = st.sidebar.file_uploader("Upload File", type=["csv"])
 
@@ -222,3 +223,4 @@ elif menu ==  "Klasifikasi":
 
                     st.write("Visualisasi Hasil Prediksi")
                     st.bar_chart(file["Prediction"]
+
