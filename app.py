@@ -206,7 +206,7 @@ elif menu ==  "Klasifikasi":
                 # ... (input processing)
                 input_data = [[gender, age, hypertension, heart_disease, ever_married, work_type, residence_type, avg_glucose_level, bmi, smoking_status]]
                 #         # Buat kamus data dengan feature_names
-                prediction = model.predict(y_test, input_data)
+                prediction = model.predict(input_data)
                 
                 st.write("## Prediction Result")
                 if prediction[0] == 1:
