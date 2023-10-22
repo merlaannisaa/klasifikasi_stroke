@@ -132,11 +132,11 @@ elif menu ==  "Klasifikasi":
         col1, col2 = st.sidebar.columns(2)
     
         with col1 :
-            gender = st.sidebar.selectbox("Gender", ["Female", "Male"])
+            gender = st.selectbox("Gender", ["Female", "Male"])
             gender = 0 if gender == "Female" else 1
     
         with col2 :
-            age = st.sidebar.text_input("Age")
+            age = st.text_input("Age")
     
         with col1 :
             hypertension = st.sidebar.selectbox("Hypertension", ["No", "Yes"])
