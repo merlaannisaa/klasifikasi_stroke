@@ -125,7 +125,7 @@ if menu == "Visualisasi":
     st.pyplot(fig)
 
 elif menu ==  "Klasifikasi":
-    input_type = st.selectbox)"Pilih Jenis Input", ["User Input", "File Input"])
+    input_type = st.selectbox("Pilih Jenis Input", ["User Input", "File Input"])
     if input_type == "User Input":
         #membagi kolom
         col1, col2 = st.columns(2)
