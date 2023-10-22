@@ -179,7 +179,7 @@ elif menu ==  "Klasifikasi":
     
                     prediction = model.predict(input_data)
 
-                    st.write("Gender:(input_data[gender])))
+                    st.write("Gender:(input_data[gender]))
                     
                     st.write("## Prediction Result")
                     if prediction[0] == 1:
