@@ -216,7 +216,7 @@ elif menu ==  "Klasifikasi":
 
             file["Prediction"] = prediction
             st.write ("Hasil Prediksi")
-            st.write(file_transformed)
+            st.write(file)
 
 
 # Tambahkan kode berikut untuk meng-host aplikasi di Streamlit Sharing
