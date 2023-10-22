@@ -205,7 +205,8 @@ elif menu ==  "Klasifikasi":
             try:
                 # ... (input processing)
                 input_data = [[gender, age, hypertension, heart_disease, ever_married, work_type, residence_type, avg_glucose_level, bmi, smoking_status]]
-                #         # Buat kamus data dengan feature_names
+                input_df = pd.DataFrame(input_data, columns=["gender", "age", "hypertension", "heart_disease", "ever_married", "work_type", "Residence_type", "avg_glucose_level", "bmi", "smoking_status"])
+
                 prediction = predict_stroke(model, input_data)
                 
                 st.write("## Prediction Result")
