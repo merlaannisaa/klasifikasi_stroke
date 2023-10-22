@@ -63,6 +63,13 @@ y_prob = model.predict_proba(X_test)[:, 1]
 # Menggunakan threshold untuk membuat prediksi berdasarkan probabilitas
 y_pred = (y_prob > threshold).astype(int)
 
+keterangan_kolom ={
+    'gender': { 0:'Female', 1: 'Male'},
+    'ever_married': {0:'No', 1:'Yes'},
+    'work_type': {0:'Govt job', 1:'Never worked', 2:'Private', 3:'Self-employed',4:'Children'},
+    'Residence_type': {0:'Rural', 1:'Urban'},
+    'smoking_status':{0:'Unknown', 1:'formerly_smoked', 2:'never smoked',3:'smoked'}}
+
 # Set page config
 # st.set_page_config(layout="centered")
 
@@ -198,24 +205,20 @@ elif menu ==  "Klasifikasi":
                     st.error("Invalid input.")
     elif input_type == "File Input":
         uploaded_file = st.sidebar.file_uploader("Upload File", type=["csv","xls","xlsx"])
-        keterangan_kolom ={
-            'gender': { 0:'Female', 1: 'Male'},
-            'ever_married': {0:'No', 1:'Yes'},
-            'work_type': {0:'Govt job', 1:'Never worked', 2:'Private', 3:'Self-employed',4:'Children'},
-            'Residence_type': {0:'Rural', 1:'Urban'},
-            'smoking_status':{0:'Unknown', 1:'formerly_smoked', 2:'never smoked',3:'smoked'}}
+
         if uploaded_file is not None:
             st.sidebar.write("Upload Success")
             file = pd.read_csv(uploaded_file)
+            file_transformed = file.copy()
+            for kolom, nilai in keterangan_kolom.items():
+                file_transformed[kolom] = file_transformed[kolom].map(nilai)
 
-            input_data = file
+            input_data = file_transformed
             prediction = model.predict(input_data)
 
-            file["Prediction"] = prediction
-            for kolom, keterangan in keterangan_kolom.items():
-                file[kolom] = data[kolom].map(keterangan)
+            file_transformed["Prediction"] = prediction
             st.write ("Hasil Prediksi")
-            st.write(file)
+            st.write(file_transformed)
 
 
 # Tambahkan kode berikut untuk meng-host aplikasi di Streamlit Sharing
