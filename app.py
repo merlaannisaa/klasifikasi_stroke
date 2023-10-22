@@ -178,13 +178,14 @@ elif menu ==  "Klasifikasi":
                     input_df = pd.DataFrame(input_data, columns=["gender", "age", "hypertension", "heart_disease", "ever_married", "work_type", "Residence_type", "avg_glucose_level", "bmi", "smoking_status"])
     
                     prediction = model.predict(input_data)
+
+                    st.write("Gender:(input_data["gender"]))
                     
                     st.write("## Prediction Result")
                     if prediction[0] == 1:
                         st.error("Risiko stroke tinggi!")
                     else:
                         st.success("Risiko stroke rendah!")
-                        # Menghitung Silhouette Score (contoh untuk clustering)
     
                     # Menampilkan DataFrame berserta hasil prediksi
                     st.write("### Data Masukan")
