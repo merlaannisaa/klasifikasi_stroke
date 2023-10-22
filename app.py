@@ -70,7 +70,7 @@ y_pred = (y_prob > threshold).astype(int)
 st.title("Klasifikasi Stroke")
 
 # Submenu untuk memilih halaman
-menu = st.sidebar.selectbox("Menu", ["Visualisasi", "Klasifikasi"])
+menu = st.sidebar.radiobutton("Menu", ["Visualisasi", "Klasifikasi"])
 if menu == "Visualisasi":
     # st.subheader("Visualisasi")
     # Mencetak jumlah data dalam set pelatihan dan pengujian
