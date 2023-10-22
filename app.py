@@ -219,6 +219,8 @@ elif menu ==  "Klasifikasi":
                 if st.sidebar.button("Predict"):
                     prediction = model.predict(input_data)
                     file["Prediction"] = prediction
+                    st.write("## Visualisasi Hasil Prediksi")
+                    st.bar_chart(file['Prediction'])
                     st.write ("Hasil Prediksi Pada Data")
                     st.write(file)
                       
