@@ -180,7 +180,7 @@ elif menu ==  "Klasifikasi":
                     prediction = model.predict(input_data)
                     
                     # Menampilkan data input pengguna
-                    st.write("### Data Input Pengguna")
+                    st.write("### Data Input")
                     st.write("Gender:", gender)
                     st.write("Age:", age)
                     st.write("Hypertension:", hypertension)
@@ -197,10 +197,6 @@ elif menu ==  "Klasifikasi":
                         st.error("Risiko stroke tinggi!")
                     else:
                         st.success("Risiko stroke rendah!")
-    
-                    # Menampilkan DataFrame berserta hasil prediksi
-                    st.write("### Data Masukan")
-                    st.write(input_df)
                     
                     # Jika Anda ingin menambahkan hasil prediksi ke dalam DataFrame
                     input_df["Prediction"] = prediction
