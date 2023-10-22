@@ -220,7 +220,14 @@ elif menu ==  "Klasifikasi":
                     prediction = model.predict(input_data)
                     file["Prediction"] = prediction
                     st.write("## Visualisasi Hasil Prediksi")
-                    st.bar_chart(file['Prediction'])
+                    prediction_counts = file['Prediction'].value_counts()
+                    labels = prediction_counts.index
+                    sizes = prediction_counts.values
+                    fig1, ax1 = plt.subplots()
+                    ax1.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90)
+                    ax1.axis('equal')  # Lingkaran yang sama
+                    st.pyplot(fig1)
+                    
                     st.write ("Hasil Prediksi Pada Data")
                     st.write(file)
                       
