@@ -17,10 +17,10 @@ def load_model():
         model = pickle.load(file)
     return model
 
-# # Fungsi untuk melakukan prediksi
-# def predict_stroke(model, input_data):
-#     prediction = model.predict(input_data)
-#     return prediction
+# Fungsi untuk melakukan prediksi
+def predict_stroke(model, input_df):
+    prediction = model.predict(input_df)
+    return prediction
 
 df = pd.read_csv('stroke_dataset.csv')
     
@@ -207,7 +207,7 @@ elif menu ==  "Klasifikasi":
                 input_data = [[gender, age, hypertension, heart_disease, ever_married, work_type, residence_type, avg_glucose_level, bmi, smoking_status]]
                 input_df = pd.DataFrame(input_data, columns=['gender', 'age', 'hypertension', 'heart_disease', 'ever_married', 'work_type', 'Residence_type', 'avg_glucose_level', ' bmi', 'smoking_status'])
                 
-                prediction = model.predict(input_df)
+                prediction = model.predict(model, input_df)
                 
                 st.write("## Prediction Result")
                 st.subheader('Data Input:')
