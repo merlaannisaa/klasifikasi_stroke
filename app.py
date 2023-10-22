@@ -155,7 +155,7 @@ if st.button ("Visualisasi"):
     # Menampilkan kurva ROC di aplikasi Streamlit
     st.pyplot(fig)
 
-if st.button ("Klasifikasi")::
+if st.button ("Klasifikasi"):
     st.subheader("Input Data")
 
     #membagi kolom
