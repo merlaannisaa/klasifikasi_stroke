@@ -59,9 +59,8 @@ st.set_page_config(layout="wide")
 st.title("Klasifikasi Stroke")
 
 # Submenu untuk memilih halaman
-menu = st.button(["Visualisasi", "Klasifikasi"])
 model = load_model()
-if menu == "Visualisasi":
+if st.button ("Visualisasi"):
     # st.subheader("Visualisasi")
     # Memuat dataset
     df = pd.read_csv('stroke_dataset.csv')
@@ -156,7 +155,7 @@ if menu == "Visualisasi":
     # Menampilkan kurva ROC di aplikasi Streamlit
     st.pyplot(fig)
 
-elif menu ==  "Klasifikasi":
+if st.button ("Klasifikasi")::
     st.subheader("Input Data")
 
     #membagi kolom
