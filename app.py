@@ -182,7 +182,15 @@ elif menu ==  "Klasifikasi":
                     st.error("Risiko stroke tinggi!")
                 else:
                     st.success("Risiko stroke rendah!")
-
+                # Menampilkan DataFrame berserta hasil prediksi
+                st.write("### Data Masukan")
+                st.write(input_df)
+                
+                # Jika Anda ingin menambahkan hasil prediksi ke dalam DataFrame
+                input_df["Prediction"] = prediction
+                st.write("### Data Masukan dengan Hasil Prediksi")
+                st.write(input_df)
+        
             except ValueError:
                 st.error("Invalid input.")
 
