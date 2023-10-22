@@ -182,6 +182,11 @@ elif menu ==  "Klasifikasi":
                     st.error("Risiko stroke tinggi!")
                 else:
                     st.success("Risiko stroke rendah!")
+                    # Menghitung Silhouette Score (contoh untuk clustering)
+                if hasattr(model, "predict"):  # Pastikan model mendukung prediksi
+                    # Misalnya, jika Anda melakukan clustering
+                    silhouette = silhouette_score(input_data, model.predict(input_data))
+                    st.write(f"### Skor Silhouette: {silhouette:.2f}")
                 # Menampilkan DataFrame berserta hasil prediksi
                 st.write("### Data Masukan")
                 st.write(input_df)
