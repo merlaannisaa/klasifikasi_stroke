@@ -201,22 +201,25 @@ elif menu ==  "Klasifikasi":
         uploaded_file = st.sidebar.file_uploader("Upload File", type=["csv","xls","xlsx"])
 
         if uploaded_file is not None:
-            st.sidebar.write("Upload Success")
+            st.sidebar.write("Upload File Success")
             file = pd.read_csv(uploaded_file)
-            
-            lab_enc = LabelEncoder()
-            for x in file.select_dtypes(include='object'):        
-            lab_enc_data= file.loc[:,['gender','ever_married','Residence_type','work_type','smoking_status']]
-            for x in lab_enc_data.columns:
-                lab_enc_data[x]=lab_enc.fit_transform(lab_enc_data[x])
-            for x in lab_enc_data.columns:
-                file[x]=lab_enc_data[x]
-            input_data = file
-            prediction = model.predict(input_data)
-
-            file["Prediction"] = prediction
-            st.write ("Hasil Prediksi")
-            st.write(file)
+            required_columns = ['gender', 'ever_married', 'Residence_type', "work_stype', 'smoking_status']
+            missing_columns = [col for col in required_columns if col not in file.columns]
+            if missing_columns :
+            st.eror(f"Kolom_kolom berikut tidak ditemukan dalam file: {', '.join(missing_columns)}'")
+            else:
+                lab_enc = LabelEncoder()      
+                lab_enc_data= file[required_columns]
+                for x in lab_enc_data.columns:
+                    lab_enc_data[x]=lab_enc.fit_transform(lab_enc_data[x])
+                for x in lab_enc_data.columns:
+                    file[x]=lab_enc_data[x]
+                input_data = file
+                prediction = model.predict(input_data)
+    
+                file["Prediction"] = prediction
+                st.write ("Hasil Prediksi")
+                st.write(file)
 
 
 # Tambahkan kode berikut untuk meng-host aplikasi di Streamlit Sharing
