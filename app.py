@@ -222,7 +222,3 @@ elif menu ==  "Klasifikasi":
 
                     st.write("Visualisasi Hasil Prediksi")
                     st.bar_chart(file["Prediction"]
-
-
-# Tambahkan kode berikut untuk meng-host aplikasi di Streamlit Sharing
-
