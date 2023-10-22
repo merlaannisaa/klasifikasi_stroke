@@ -211,7 +211,7 @@ elif menu ==  "Klasifikasi":
                 
                 st.write("## Prediction Result")
                 st.subheader('Data Input:')
-                    st.write(input_df)
+                st.write(input_df)
                 if prediction[0] == 1:
                     st.error("Risiko stroke tinggi!")
                 else:
