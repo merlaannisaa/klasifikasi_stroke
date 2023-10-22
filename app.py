@@ -202,7 +202,7 @@ elif menu ==  "Klasifikasi":
             'gender': { 0:'Female', 1: 'Male'},
             'ever_married': {0:'No', 1:'Yes'},
             'work_type': {0:'Govt job', 1:'Never worked', 2:'Private', 3:'Self-employed',4:'Children'},
-            'Residence_type:{0:'Rural', '1:'Urban'},
+            'Residence_type: {0:'Rural', 1:'Urban'},
             'smoking_status':{0:'Unknown', 1:'formerly_smoked', 2:'never smoked',3:'smoked'}}
         if uploaded_file is not None:
             st.sidebar.write("Upload Success")
