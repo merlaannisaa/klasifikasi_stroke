@@ -180,17 +180,17 @@ elif menu ==  "Klasifikasi":
                     prediction = model.predict(input_data)
 
                     # Menampilkan data input pengguna
-                    st.write("### Data Input Pengguna")
-                    st.write("Gender:", gender)
-                    st.write("Age:", age)
-                    st.write("Hypertension:", hypertension)
-                    st.write("Heart Disease:", heart_disease)
-                    st.write("Ever Married:", ever_married)
-                    st.write("Work Type:", work_type)
-                    st.write("Residence Type:", residence_type)
-                    st.write("Average Glucose Level:", avg_glucose_level)
-                    st.write("BMI:", bmi)
-                    st.write("Smoking Status:", smoking_status)
+                    st.write(## "Data Input")
+                    st.write("### Gender:", gender)
+                    st.write("### Age:", age)
+                    st.write("### Hypertension:", hypertension)
+                    st.write("### Heart Disease:", heart_disease)
+                    st.write("### Ever Married:", ever_married)
+                    st.write("### Work Type:", work_type)
+                    st.write("### Residence Type:", residence_type)
+                    st.write("### Average Glucose Level:", avg_glucose_level)
+                    st.write("### BMI:", bmi)
+                    st.write("### Smoking Status:", smoking_status)
                     
                     st.write("## Prediction Result")
                     if prediction[0] == 1:
