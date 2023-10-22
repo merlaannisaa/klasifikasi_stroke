@@ -235,7 +235,7 @@ elif menu ==  "Klasifikasi":
                     st.write(f"Jumlah Data Terprediksi 1: {sizes[1]} ({percentages[1]:.1f}%)")
                     st.pyplot(fig1)
                     
-                    st.write ("##Hasil Prediksi Pada Data")
+                    st.write("## Hasil Prediksi Pada Data")
                     st.write(file)
                       
                     csv = file.to_csv(index=False)
