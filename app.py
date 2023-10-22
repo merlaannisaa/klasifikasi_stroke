@@ -11,17 +11,18 @@ import plotly.figure_factory as ff
 from sklearn.metrics import recall_score, f1_score, roc_curve, roc_auc_score
 from sklearn.metrics import classification_report
 
-# # Fungsi untuk memuat model
-# def load_model():
-#     with open('model.pkl', 'rb') as file:
-#         model = pickle.load(file)
-#     return model
+# Fungsi untuk memuat model
+def load_model():
+    with open('model.pkl', 'rb') as file:
+        model = pickle.load(file)
+    return model
 
 # # Fungsi untuk melakukan prediksi
 # def predict_stroke(model, input_data):
 #     prediction = model.predict(input_data)
 #     return prediction
 
+model = load_model()
 df = pd.read_csv('stroke_dataset.csv')
     
 # Melakukan balanced split
@@ -53,6 +54,15 @@ y_test = pd.concat([y_test_stroke, y_test_non_stroke])
 smoteenn = SMOTEENN(random_state=0, smote=SMOTE(sampling_strategy='auto', k_neighbors=36, random_state=0))
 resX_train, resY_train= smoteenn.fit_resample(X_train,y_train)
 
+# Mengubah threshold menjadi 0.1
+threshold = 0.1
+
+# Mengambil probabilitas prediksi
+y_prob = model.predict_proba(X_test)[:, 1]
+
+# Menggunakan threshold untuk membuat prediksi berdasarkan probabilitas
+y_pred = (y_prob > threshold).astype(int)
+
 # Set page config
 st.set_page_config(layout="wide")
 
@@ -60,53 +70,11 @@ st.title("Klasifikasi Stroke")
 
 # Submenu untuk memilih halaman
 menu = st.sidebar.radio("Navigation", ["Visualisasi", "Klasifikasi"])
-# model = load_model()
 if menu == "Visualisasi":
     # st.subheader("Visualisasi")
-    # Memuat dataset
-    df = pd.read_csv('stroke_dataset.csv')
-    
-    # Melakukan balanced split
-    # Memisahkan dataset menjadi dua berdasarkan kelas
-    stroke_class = df[df['stroke'] == 1]  # Memisahkan data dengan kelas 1 (stroke)
-    non_stroke_class = df[df['stroke'] == 0]  # Memisahkan data dengan kelas 0 (tidak stroke)
-    
-    # Memisahkan stroke_class menjadi data pelatihan dan pengujian dengan perbandingan 70:30
-    X_stroke = stroke_class.drop(columns=['stroke'])
-    y_stroke = stroke_class['stroke']
-    
-    X_train_stroke, X_test_stroke, y_train_stroke, y_test_stroke = train_test_split(X_stroke, y_stroke, test_size=0.3, random_state=0)
-    
-    X_non_stroke = non_stroke_class.drop(columns=['stroke'])
-    y_non_stroke = non_stroke_class['stroke']
-    
-    # Menggunakan len(X_test_stroke) untuk menentukan jumlah data pengujian yang sama dengan stroke_class
-    X_train_non_stroke, X_test_non_stroke, y_train_non_stroke, y_test_non_stroke = train_test_split(
-    X_non_stroke, y_non_stroke, test_size=len(X_test_stroke), random_state=0)
-    
-    # Menggabungkan data pelatihan dan pengujian dari kedua kelas (stroke dan non-stroke)
-    X_train = pd.concat([X_train_stroke, X_train_non_stroke])
-    y_train = pd.concat([y_train_stroke, y_train_non_stroke])
-    
-    X_test = pd.concat([X_test_stroke, X_test_non_stroke])
-    y_test = pd.concat([y_test_stroke, y_test_non_stroke])
-    
-    # Melakukan SMOTE-ENN untuk oversampling
-    smoteenn = SMOTEENN(random_state=0, smote=SMOTE(sampling_strategy='auto', k_neighbors=36, random_state=0))
-    resX_train, resY_train= smoteenn.fit_resample(X_train,y_train)
-
     # Mencetak jumlah data dalam set pelatihan dan pengujian
     st.write(f"Number of samples in Training Data: {len(resX_train)}")
     st.write(f"Number of samples in Testing Data: {len(X_test)}")
-
-    # Mengubah threshold menjadi 0.1
-    threshold = 0.1
-
-    # Mengambil probabilitas prediksi
-    y_prob = model.predict_proba(X_test)[:, 1]
-
-    # Menggunakan threshold untuk membuat prediksi berdasarkan probabilitas
-    y_pred = (y_prob > threshold).astype(int)
     
     # Menghitung akurasi model
     accuracy = accuracy_score(y_test, y_pred)
