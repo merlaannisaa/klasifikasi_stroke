@@ -11,16 +11,16 @@ import plotly.figure_factory as ff
 from sklearn.metrics import recall_score, f1_score, roc_curve, roc_auc_score
 from sklearn.metrics import classification_report
 
-# Fungsi untuk memuat model
-def load_model():
-    with open('model.pkl', 'rb') as file:
-        model = pickle.load(file)
-    return model
+# # Fungsi untuk memuat model
+# def load_model():
+#     with open('model.pkl', 'rb') as file:
+#         model = pickle.load(file)
+#     return model
 
-# Fungsi untuk melakukan prediksi
-def predict_stroke(model, input_df):
-    prediction = model.predict(input_df)
-    return prediction
+# # Fungsi untuk melakukan prediksi
+# def predict_stroke(model, input_df):
+#     prediction = model.predict(input_df)
+#     return prediction
 
 df = pd.read_csv('stroke_dataset.csv')
     
@@ -210,7 +210,7 @@ elif menu ==  "Klasifikasi":
                 st.subheader("Data Input:")
                 st.write(input_df)
                 
-                prediction = model.predict(model, input_df)
+                prediction = model.predict(input_data)
                 
                 st.write("## Prediction Result")
                 if prediction[0] == 1:
