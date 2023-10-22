@@ -202,7 +202,7 @@ elif menu ==  "Klasifikasi":
 
         if uploaded_file is not None:
             st.sidebar.write("Upload File Success")
-            file = pd.read_csv(uploaded_file)
+            file = pd.read_Excel(uploaded_file)
             required_columns = ['gender', 'ever_married', 'Residence_type', 'work_type', 'smoking_status']
             missing_columns = [col for col in required_columns if col not in file.columns]
             if missing_columns :
