@@ -11,6 +11,7 @@ from sklearn.metrics import accuracy_score, confusion_matrix
 import plotly.figure_factory as ff
 from sklearn.metrics import recall_score, f1_score, roc_curve, roc_auc_score
 from sklearn.metrics import classification_report, silhouette_score
+import base64
 
 # Fungsi untuk memuat model
 def load_model():
@@ -215,10 +216,16 @@ elif menu ==  "Klasifikasi":
                 for x in lab_enc_data.columns:
                     file[x]=lab_enc_data[x]
                 input_data = file
-                if st.sidebar.button("Preict"):
+                if st.sidebar.button("Predict"):
                     prediction = model.predict(input_data)
                     file["Prediction"] = prediction
                     st.write ("Hasil Prediksi Pada Data")
                     st.write(file)
+                                
+                    # Tambahkan tautan unduhan dalam format Excel
+                    excel_file = file.to_excel(index=False, engine='openpyxl')
+                    b64 = base64.b64encode(excel_file).decode()
+                    href = f'<a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}" download="hasil_prediksi.xlsx">Unduh Hasil Prediksi (Excel)</a>'
+                    st.markdown(href, unsafe_allow_html=True)
 
 
