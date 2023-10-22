@@ -17,10 +17,10 @@ def load_model():
         model = pickle.load(file)
     return model
 
-# Fungsi untuk melakukan prediksi
-def predict_stroke(model, input_data):
-    prediction = model.predict(input_data)
-    return prediction
+# # Fungsi untuk melakukan prediksi
+# def predict_stroke(model, input_data):
+#     prediction = model.predict(input_data)
+#     return prediction
 
 df = pd.read_csv('stroke_dataset.csv')
     
@@ -59,8 +59,9 @@ st.set_page_config(layout="wide")
 st.title("Klasifikasi Stroke")
 
 # Submenu untuk memilih halaman
+menu = st.sidebar.radio("Navigation", ["Visualisasi", "Klasifikasi"])
 model = load_model()
-if st.button ("Visualisasi"):
+if menu == "Visualisasi":
     # st.subheader("Visualisasi")
     # Memuat dataset
     df = pd.read_csv('stroke_dataset.csv')
@@ -155,7 +156,7 @@ if st.button ("Visualisasi"):
     # Menampilkan kurva ROC di aplikasi Streamlit
     st.pyplot(fig)
 
-if st.button ("Klasifikasi"):
+elif menu ==  "Klasifikasi":
     st.subheader("Input Data")
 
     #membagi kolom
@@ -205,7 +206,7 @@ if st.button ("Klasifikasi"):
                 # ... (input processing)
                 input_data = [[gender, age, hypertension, heart_disease, ever_married, work_type, residence_type, avg_glucose_level, bmi, smoking_status]]
                 #         # Buat kamus data dengan feature_names
-                prediction = predict_stroke(model, input_data)
+                prediction = model.predict(y_test, input_data)
                 
                 st.write("## Prediction Result")
                 if prediction[0] == 1:
@@ -224,4 +225,3 @@ if st.button ("Klasifikasi"):
     # This app predicts the risk of stroke based on patient information.
     # Please fill in the details on the left and click the 'Predict' button.
     # """)
-
