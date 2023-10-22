@@ -192,16 +192,16 @@ elif menu ==  "Klasifikasi":
                     st.write("BMI:", bmi)
                     st.write("Smoking Status:", smoking_status)
                     
-                    st.write("## Prediction Result")
+                    st.write("### Prediction Result")
                     if prediction[0] == 1:
                         st.error("Risiko stroke tinggi!")
                     else:
                         st.success("Risiko stroke rendah!")
                     
-                    # Jika Anda ingin menambahkan hasil prediksi ke dalam DataFrame
-                    input_df["Prediction"] = prediction
-                    st.write("### Data Masukan dengan Hasil Prediksi")
-                    st.write(input_df)
+                    # # Jika Anda ingin menambahkan hasil prediksi ke dalam DataFrame
+                    # input_df["Prediction"] = prediction
+                    # st.write("### Data Masukan dengan Hasil Prediksi")
+                    # st.write(input_df)
             
                 except ValueError:
                     st.error("Invalid input.")
