@@ -128,7 +128,7 @@ elif menu ==  "Klasifikasi":
     input_type = st.selectbox("Pilih Jenis Input", ["User Input", "File Input"])
     if input_type == "User Input":
         st.write("user input")
-    elif input_type == "File Input"):
+    elif input_type == "File Input":
         st.write("X")
         # #membagi kolom
         # col1, col2 = st.columns(2)
