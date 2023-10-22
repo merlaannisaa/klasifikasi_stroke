@@ -64,7 +64,7 @@ y_prob = model.predict_proba(X_test)[:, 1]
 y_pred = (y_prob > threshold).astype(int)
 
 # Set page config
-st.set_page_config(layout="centered")
+st.set_page_config(layout="narrow")
 
 st.title("Klasifikasi Stroke")
 
