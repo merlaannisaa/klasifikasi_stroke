@@ -205,7 +205,7 @@ elif menu ==  "Klasifikasi":
             try:
                 # ... (input processing)
                 input_data = [[gender, age, hypertension, heart_disease, ever_married, work_type, residence_type, avg_glucose_level, bmi, smoking_status]]
-                input_df = pd.DataFrame(input_data, columns=['gender', 'age', 'hypertension, 'heart_disease, 'ever_married', 'work_type', 'Residence_type', 'avg_glucose_level', ' bmi', 'smoking_status'])
+                input_df = pd.DataFrame(input_data, columns=['gender', 'age', 'hypertension, 'heart_disease', 'ever_married', 'work_type', 'Residence_type', 'avg_glucose_level', ' bmi', 'smoking_status'])
                 
                 prediction = model.predict(input_df)
                 
