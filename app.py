@@ -70,7 +70,7 @@ y_pred = (y_prob > threshold).astype(int)
 st.title("Klasifikasi Stroke")
 
 # Submenu untuk memilih halaman
-menu = st.sidebar.selectbox("Navigation", ["Visualisasi", "Klasifikasi"])
+menu = st.sidebar.selectbox("Menu", ["Visualisasi", "Klasifikasi"])
 if menu == "Visualisasi":
     # st.subheader("Visualisasi")
     # Mencetak jumlah data dalam set pelatihan dan pengujian
@@ -128,7 +128,6 @@ if menu == "Visualisasi":
 elif menu ==  "Klasifikasi":
     input_type = st.sidebar.selectbox("Pilih Jenis Input", ["User Input", "File Input"])
     if input_type == "User Input":
-        st.write("user input")
         #membagi kolom
         col1, col2 = st.sidebar.columns(2)
     
@@ -215,11 +214,11 @@ elif menu ==  "Klasifikasi":
                 for x in lab_enc_data.columns:
                     file[x]=lab_enc_data[x]
                 input_data = file
-                prediction = model.predict(input_data)
-    
-                file["Prediction"] = prediction
-                st.write ("Hasil Prediksi")
-                st.write(file)
+                if st.sidebar.button("Preict"):
+                    prediction = model.predict(input_data)
+                    file["Prediction"] = prediction
+                    st.write ("Hasil Prediksi Pada Data")
+                    st.write(file)
 
 
 # Tambahkan kode berikut untuk meng-host aplikasi di Streamlit Sharing
