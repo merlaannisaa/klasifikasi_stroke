@@ -11,6 +11,7 @@ from sklearn.metrics import accuracy_score, confusion_matrix
 import plotly.figure_factory as ff
 from sklearn.metrics import recall_score, f1_score, roc_curve, roc_auc_score
 from sklearn.metrics import classification_report, silhouette_score
+import base64
 
 # Fungsi untuk memuat model
 def load_model():
