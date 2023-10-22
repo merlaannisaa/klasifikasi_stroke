@@ -197,76 +197,18 @@ elif menu ==  "Klasifikasi":
                 except ValueError:
                     st.error("Invalid input.")
     elif input_type == "File Input":
-        st.write("X")
-        # #membagi kolom
-        # col1, col2 = st.columns(2)
-    
-        # with col1 :
-        #     gender = st.selectbox("Gender", ["Female", "Male"])
-        #     gender = 0 if gender == "Female" else 1
-    
-        # with col2 :
-        #     age = st.text_input("Age")
-    
-        # with col1 :
-        #     hypertension = st.selectbox("Hypertension", ["No", "Yes"])
-        #     hypertension = 0 if hypertension == "No" else 1
-    
-        # with col2 :
-        #     heart_disease = st.selectbox("Heart Disease", ["No", "Yes"])
-        #     heart_disease = 0 if heart_disease == "No" else 1
-    
-        # with col1 :
-        #     ever_married = st.selectbox("Ever Married", ["No", "Yes"])
-        #     ever_married = 0 if ever_married == "No" else 1
-    
-        # with col2:
-        #     work_type_dict = {"Govt Job": 0, "Never Worked": 1, "Private": 2, "Self-employed": 3, "Children": 4}
-        #     work_type = st.selectbox("Work Type", list(work_type_dict.keys()))
-        #     work_type = work_type_dict[work_type]
-    
-        # with col1 :
-        #     residence_type = st.selectbox("Residence Type", ["Rural", "Urban"])
-        #     residence_type = 0 if residence_type == "Rural" else 1
-    
-        # with col2:
-        #     avg_glucose_level = st.text_input("Average Glucose Level")
-    
-        # with col1 :
-        #     bmi = st.text_input("BMI")
-    
-        # with col2:
-        #     smoking_status_dict = {"Unknown": 0, "Formerly Smoked": 1, "Never Smoked": 2, "Smokes": 3}
-        #     smoking_status = st.selectbox("Smoking Status", list(smoking_status_dict.keys()))
-        #     smoking_status = smoking_status_dict[smoking_status]
-        
-        # if st.button("Predict"):
-        #         try:
-        #             # ... (input processing)
-        #             input_data = [[gender, age, hypertension, heart_disease, ever_married, work_type, residence_type, avg_glucose_level, bmi, smoking_status]]
-        #             input_df = pd.DataFrame(input_data, columns=["gender", "age", "hypertension", "heart_disease", "ever_married", "work_type", "Residence_type", "avg_glucose_level", "bmi", "smoking_status"])
-    
-        #             prediction = model.predict(input_data)
-                    
-        #             st.write("## Prediction Result")
-        #             if prediction[0] == 1:
-        #                 st.error("Risiko stroke tinggi!")
-        #             else:
-        #                 st.success("Risiko stroke rendah!")
-        #                 # Menghitung Silhouette Score (contoh untuk clustering)
-    
-        #             # Menampilkan DataFrame berserta hasil prediksi
-        #             st.write("### Data Masukan")
-        #             st.write(input_df)
-                    
-        #             # Jika Anda ingin menambahkan hasil prediksi ke dalam DataFrame
-        #             input_df["Prediction"] = prediction
-        #             st.write("### Data Masukan dengan Hasil Prediksi")
-        #             st.write(input_df)
-            
-        #         except ValueError:
-        #             st.error("Invalid input.")
-            
+        uploaded_file = st.sidebar.file_uploader("Upload File", type=["csv,"xls","xlsx"])
+
+        if uploaded_file is not None:
+            st.sidebar.write("Upload Success")
+            file = pd.read_csv(uploaded_file)
+
+            input_data = file
+            prediction = model.predict(input_data)
+
+            file["Prediction"] = prediction
+            st.write ("Hasil Prediksi")
+            st.write(file)
 
 
 # Tambahkan kode berikut untuk meng-host aplikasi di Streamlit Sharing
