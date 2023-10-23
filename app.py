@@ -12,6 +12,7 @@ import plotly.figure_factory as ff
 from sklearn.metrics import recall_score, f1_score, roc_curve, roc_auc_score
 from sklearn.metrics import classification_report, silhouette_score
 import base64
+from util import classify
 
 # Fungsi untuk memuat model
 def load_model():
@@ -176,8 +177,13 @@ elif menu ==  "Klasifikasi":
                     # ... (input processing)
                     input_data = [[gender, age, hypertension, heart_disease, ever_married, work_type, residence_type, avg_glucose_level, bmi, smoking_status]]
                     input_df = pd.DataFrame(input_data, columns=["gender", "age", "hypertension", "heart_disease", "ever_married", "work_type", "Residence_type", "avg_glucose_level", "bmi", "smoking_status"])
-    
+                    
+                    # load class names
+                    with open('./labels.txt', 'r') as f:
+                        class_names = [a[:-1].split(' ')[1] for a in f.readlines()]
+                        f.close()
                     prediction = model.predict(input_data)
+                    class_name, conf_score = classify(input_data, model, class_names)
                     
                     # Menampilkan data input pengguna
                     st.write("### Data Input")
