@@ -190,7 +190,10 @@ elif menu ==  "Klasifikasi":
                     st.write("Residence Type:", "Urban" if residence_type else "Rural")  # Menggunakan "Urban" atau "Rural" untuk menampilkan nilai asli
                     st.write("Average Glucose Level:", avg_glucose_level)
                     st.write("BMI:", bmi)
-                    st.write("Smoking Status:", smoking_status)
+                    # Mengubah "smoking status" menjadi teks
+                    smoking_status_mapping = {0: "Unknown", 1: "Formerly Smoked", 2: "Never Smoked", 3: "Smokes"}
+                    smoking_status_text = smoking_status_mapping.get(smoking_status, "Unknown")
+                    st.write("Smoking Status:", smoking_status_text)
                     # # Menampilkan data input pengguna
                     # st.write("### Data Input")
                     # st.write("Gender:", gender)
