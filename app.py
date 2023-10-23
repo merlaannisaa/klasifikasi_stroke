@@ -178,19 +178,31 @@ elif menu ==  "Klasifikasi":
                     input_df = pd.DataFrame(input_data, columns=["gender", "age", "hypertension", "heart_disease", "ever_married", "work_type", "Residence_type", "avg_glucose_level", "bmi", "smoking_status"])
                     
                     prediction = model.predict(input_data)
-                    
+            
                     # Menampilkan data input pengguna
                     st.write("### Data Input")
                     st.write("Gender:", gender)
                     st.write("Age:", age)
-                    st.write("Hypertension:", hypertension)
-                    st.write("Heart Disease:", heart_disease)
-                    st.write("Ever Married:", ever_married)
-                    st.write("Work Type:", work_type)
-                    st.write("Residence Type:", residence_type)
+                    st.write("Hypertension:", "Yes" if hypertension else "No")  # Menggunakan "Yes" atau "No" untuk menampilkan nilai asli
+                    st.write("Heart Disease:", "Yes" if heart_disease else "No")  # Menggunakan "Yes" atau "No" untuk menampilkan nilai asli
+                    st.write("Ever Married:", "Yes" if ever_married else "No")  # Menggunakan "Yes" atau "No" untuk menampilkan nilai asli
+                    st.write("Work Type:", work_type)  # Menggunakan nilai asli yang telah Anda simpan
+                    st.write("Residence Type:", "Urban" if residence_type else "Rural")  # Menggunakan "Urban" atau "Rural" untuk menampilkan nilai asli
                     st.write("Average Glucose Level:", avg_glucose_level)
                     st.write("BMI:", bmi)
                     st.write("Smoking Status:", smoking_status)
+                    # # Menampilkan data input pengguna
+                    # st.write("### Data Input")
+                    # st.write("Gender:", gender)
+                    # st.write("Age:", age)
+                    # st.write("Hypertension:", hypertension)
+                    # st.write("Heart Disease:", heart_disease)
+                    # st.write("Ever Married:", ever_married)
+                    # st.write("Work Type:", work_type)
+                    # st.write("Residence Type:", residence_type)
+                    # st.write("Average Glucose Level:", avg_glucose_level)
+                    # st.write("BMI:", bmi)
+                    # st.write("Smoking Status:", smoking_status)
                     
                     st.write("### Prediction Result")
                     # if prediction[0] == 1:
