@@ -181,7 +181,7 @@ elif menu ==  "Klasifikasi":
             
                     # Menampilkan data input pengguna
                     st.write("### Data Input")
-                    st.write("Gender:", gender)
+                    st.write("Gender:", "Female" if gender == 0 else "Male")
                     st.write("Age:", age)
                     st.write("Hypertension:", "Yes" if hypertension else "No")  # Menggunakan "Yes" atau "No" untuk menampilkan nilai asli
                     st.write("Heart Disease:", "Yes" if heart_disease else "No")  # Menggunakan "Yes" atau "No" untuk menampilkan nilai asli
