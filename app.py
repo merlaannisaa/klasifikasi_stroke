@@ -193,10 +193,20 @@ elif menu ==  "Klasifikasi":
                     st.write("Smoking Status:", smoking_status)
                     
                     st.write("### Prediction Result")
+                    # if prediction[0] == 1:
+                    #     st.error("Risiko stroke tinggi!")
+                    # else:
+                    #     st.success("Risiko stroke rendah!")
                     if prediction[0] == 1:
                         st.error("Risiko stroke tinggi!")
+                        # Jika Anda ingin menampilkan nilai probabilitas pada hasil prediksi, Anda dapat menggunakan model.predict_proba
+                        proba = model.predict_proba(input_data)
+                        st.write("Probabilitas Risiko Stroke:", proba[0][1])
                     else:
                         st.success("Risiko stroke rendah!")
+                        # Jika Anda ingin menampilkan nilai probabilitas pada hasil prediksi, Anda dapat menggunakan model.predict_proba
+                        proba = model.predict_proba(input_data)
+                        st.write("Probabilitas Risiko Stroke:", proba[0][1])
                     
                     # # Jika Anda ingin menambahkan hasil prediksi ke dalam DataFrame
                     # input_df["Prediction"] = prediction
