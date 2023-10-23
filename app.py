@@ -186,7 +186,10 @@ elif menu ==  "Klasifikasi":
                     st.write("Hypertension:", "Yes" if hypertension else "No")  # Menggunakan "Yes" atau "No" untuk menampilkan nilai asli
                     st.write("Heart Disease:", "Yes" if heart_disease else "No")  # Menggunakan "Yes" atau "No" untuk menampilkan nilai asli
                     st.write("Ever Married:", "Yes" if ever_married else "No")  # Menggunakan "Yes" atau "No" untuk menampilkan nilai asli
-                    st.write("Work Type:", work_type)  # Menggunakan nilai asli yang telah Anda simpan
+                    # Mengubah "work type" menjadi teks
+                    work_type_mapping = {0: "Govt Job", 1: "Never Worked", 2: "Private", 3: "Self-employed", 4: "Children"}
+                    work_type_text = work_type_mapping.get(work_type, "Unknown")
+                    st.write("Work Type:", work_type_text)
                     st.write("Residence Type:", "Urban" if residence_type else "Rural")  # Menggunakan "Urban" atau "Rural" untuk menampilkan nilai asli
                     st.write("Average Glucose Level:", avg_glucose_level)
                     st.write("BMI:", bmi)
@@ -194,18 +197,6 @@ elif menu ==  "Klasifikasi":
                     smoking_status_mapping = {0: "Unknown", 1: "Formerly Smoked", 2: "Never Smoked", 3: "Smokes"}
                     smoking_status_text = smoking_status_mapping.get(smoking_status, "Unknown")
                     st.write("Smoking Status:", smoking_status_text)
-                    # # Menampilkan data input pengguna
-                    # st.write("### Data Input")
-                    # st.write("Gender:", gender)
-                    # st.write("Age:", age)
-                    # st.write("Hypertension:", hypertension)
-                    # st.write("Heart Disease:", heart_disease)
-                    # st.write("Ever Married:", ever_married)
-                    # st.write("Work Type:", work_type)
-                    # st.write("Residence Type:", residence_type)
-                    # st.write("Average Glucose Level:", avg_glucose_level)
-                    # st.write("BMI:", bmi)
-                    # st.write("Smoking Status:", smoking_status)
                     
                     st.write("### Prediction Result")
                     # if prediction[0] == 1:
