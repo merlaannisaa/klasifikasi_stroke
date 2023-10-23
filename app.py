@@ -181,7 +181,7 @@ elif menu ==  "Klasifikasi":
                     # load class names
                     with open('./labels.txt', 'r') as f:
                         class_names = [a[:-1].split(' ')[1] for a in f.readlines()]
-                        f.close()
+                        f.close()
                     prediction = model.predict(input_data)
                     class_name, conf_score = classify(input_data, model, class_names)
                     
