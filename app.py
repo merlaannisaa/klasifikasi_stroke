@@ -255,7 +255,7 @@ elif menu ==  "Klasifikasi":
                         href = f'<a href="data:file/csv;base64,{b64}" download="hasil_prediksi.csv">Unduh Hasil Prediksi (CSV)</a>'
                         st.markdown(href, unsafe_allow_html=True)
 
-        elif input_type == "File with Labels":
+        else:
             uploaded_file2 = st.sidebar.file_uploader("Upload File", type=["csv"])
 
             if uploaded_file2 is not None:
