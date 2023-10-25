@@ -286,10 +286,15 @@ elif menu ==  "Klasifikasi":
                         # acc = accuracy_score(Y, prediction)
                         prediction = model.predict(input_data)   
                         acc = accuracy_score(Y, prediction)
+                        recall = recall_score(Y, prediction)
+                        prec = precision_score(Y, prediction)
+                        f1 = f1_score(Y, prediction)
                         file2["Prediction"] = prediction
-                        # file2["Probabilitas"] = proba
 
                         st.write("Akurasi :", acc)
+                        st.write("Recall :", recall)
+                        st.write("Precision :", prec)
+                        st.write("F1 Score :", f1)
                         st.write("## Hasil Prediksi Pada Data") 
                         st.write(file2)
                               
