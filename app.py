@@ -112,7 +112,7 @@ if menu == "Visualisasi":
     values = [accuracy, recall, prec, f1]
 
     plt.figure(figsize=(20,12))
-    plt.bar(metrics, values)
+    plt.bar(metrics, values, fontsize=30)
     plt.title("Evaluation Metrics on Test Data", fontsize=30)
     plt.xlabel("Metrics", fontsize=30)
     plt.ylabel("Values", fontsize=30)
@@ -123,7 +123,6 @@ if menu == "Visualisasi":
     # Membuat kurva ROC
     fig, ax = plt.subplots(figsize=(20, 12), dpi=500)
     ax.plot(fpr, tpr, label=f'ROC curve (AUC = {roc_score:.2f})')
-    ax.text(0.6, 0.2, f'ROC Curve(AUC = {roc_score:.2f})', fontsize=30)
     ax.plot([0, 1], [0, 1], 'k--')
     ax.set_xlim([0.0, 1.0])
     ax.set_ylim([0.0, 1.05])
