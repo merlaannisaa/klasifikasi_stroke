@@ -227,8 +227,8 @@ elif menu ==  "Klasifikasi":
                     st.error("Invalid input.")
     
     elif input_type == "File Input":
-        input_type = st.sidebar.radio("Pilih Jenis Input", ["Data without Label", "Data with Label"])
-        if input_type == "Data without Label":
+        input_type = st.sidebar.radio("Pilih Jenis Input", ["Data Tanpa Label", "Data Dengan Label"])
+        if input_type == "Data Tanpa Label":
             uploaded_file = st.sidebar.file_uploader("Upload File", type=["csv"])
 
             if uploaded_file is not None:
