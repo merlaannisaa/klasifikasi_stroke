@@ -113,9 +113,9 @@ if menu == "Visualisasi":
 
     plt.figure(figsize=(20,12))
     plt.bar(metrics, values)
-    plt.title("Evaluation Metrics on Test Data", fontsize=15)
-    plt.xlabel("Metrics", fontsize=15 )
-    plt.ylabel("Values", fontsize=15)
+    plt.title("Evaluation Metrics on Test Data", fontsize=30)
+    plt.xlabel("Metrics", fontsize=30)
+    plt.ylabel("Values", fontsize=30)
     st.pyplot(plt)
 
     fpr, tpr, thresholds = roc_curve(y_test, y_pred)
