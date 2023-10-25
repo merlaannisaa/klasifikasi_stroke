@@ -258,7 +258,7 @@ elif menu ==  "Klasifikasi":
         elif input_type == "File with Labels":
             uploaded_file2 = st.sidebar.file_uploader("Upload File", type=["csv"])
 
-            if uploaded_file is not None:
+            if uploaded_file2 is not None:
                 st.sidebar.write("Upload File Success")
                 file = pd.read_csv(uploaded_file)
                 file2 = file.copy()
