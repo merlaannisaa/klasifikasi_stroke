@@ -257,7 +257,7 @@ elif menu ==  "Klasifikasi":
                         total_data = len(file)
                         jumlah_1 = sum(prediction)
                         jumlah_0 = total_data = jumlah_1
-                        st.write("Jumlah Data: (len{file})")
+                        st.write("Jumlah Data: (total_data)")
                         st.write(f"Terklasifikasi Stroke: (len{jumlah_1})")
                         st.write(f"Terklasifikasi Tidak Stroke: (len{jumlah_0})")
 
