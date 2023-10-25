@@ -209,7 +209,7 @@ elif menu ==  "Klasifikasi":
                     proba = model.predict_proba(input_data)[:, 1]
                     prediction = (proba > threshold).astype(int)
                     
-                    st.write("### Prediction Result")
+                    st.write("### Classification Result")
 
                     if prediction[0] == 1:
                         st.error("Pasien Terklasifikasi Stroke!")
