@@ -256,4 +256,3 @@ elif menu ==  "Klasifikasi":
                         st.markdown(href, unsafe_allow_html=True)
 
         elif input_type == "File with Labels":
-        
