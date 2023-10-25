@@ -252,13 +252,20 @@ elif menu ==  "Klasifikasi":
                         threshold = 0.1
                         proba = model.predict_proba(input_data)[:, 1]
                         prediction = (proba > threshold).astype(int)
-                            
-                        file["Prediction"] = prediction
+
+                        total_data = len(file)
+                        jumlah_1 = sum(prediction)
+                        jumlah_0 = total_data = jumlah_1
+                        st.write("Jumlah Data: {total_data}")
+                        st.write("Terprediksi Stroke: {jumlah_1}")
+                        st.write("Terprediksi Tidak Stroke: {jumlah_0}")
+                        
+                        file2["Prediction"] = prediction
                         # file["Probabilitas"] = proba
                             
                         st.write("## Hasil Prediksi Pada Data")
-                        st.write(file)
-                              
+                        st.write(file2)
+
                         csv = file.to_csv(index=False)
                         b64 = base64.b64encode(csv.encode()).decode()
                         href = f'<a href="data:file/csv;base64,{b64}" download="hasil_prediksi.csv">Unduh Hasil Prediksi (CSV)</a>'
