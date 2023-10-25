@@ -212,10 +212,10 @@ elif menu ==  "Klasifikasi":
                     st.write("### Prediction Result")
 
                     if prediction[0] == 1:
-                        st.error("Risiko stroke tinggi!")
+                        st.error("Pasien Memiliki Risiko Stroke!")
                         # st.write("Probabilitas Risiko Stroke:", proba[0])
                     else:
-                        st.success("Risiko stroke rendah!")
+                        st.success("Pasien Tidak Berisiko Stroke!")
                         # st.write("Probabilitas Risiko Stroke:", proba[0])
                     
                     # # Jika Anda ingin menambahkan hasil prediksi ke dalam DataFrame
