@@ -277,7 +277,7 @@ elif menu ==  "Klasifikasi":
             if uploaded_file is not None:
                 st.sidebar.write("Upload File Success")
                 file = pd.read_csv(uploaded_file)
-                file2 = file.copy()
+                file2 = pd.read_csv(uploaded_file)
                 X = file.drop(columns=['stroke'])
                 Y = file['stroke']
                 required_columns = ['gender', 'ever_married', 'Residence_type', 'work_type', 'smoking_status']
