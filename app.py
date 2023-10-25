@@ -82,14 +82,6 @@ if menu == "Visualisasi":
     # Menghitung akurasi model
     accuracy = accuracy_score(y_test, y_pred)
 
-    # # Menampilkan confusion matrix
-    # conf_matrix = confusion_matrix(y_test, y_pred)
-    # st.write(f"### Confusion Matrix")
-    # # Menggunakan plotly untuk membuat confusion matrix
-    # fig = ff.create_annotated_heatmap(conf_matrix, x=['Predicted 0', 'Predicted 1'], y=['Actual 0', 'Actual 1'], colorscale='Viridis')
-    # fig.update_layout(width=500, height=400)
-    # st.plotly_chart(fig)
-
     # Mengatur urutan kelas
     class_order = [1, 0]  # Urutan yang diinginkan, [1, 0] dalam hal ini
 
@@ -105,23 +97,25 @@ if menu == "Visualisasi":
 
     # Menghitung recall, F1 score, dan ROC score
     recall = recall_score(y_test, y_pred)
+    prec = precision_score(y_test, y_pred)
     f1 = f1_score(y_test, y_pred)
     roc_score = roc_auc_score(y_test, y_pred)
     
     st.write("## Evaluation Metrics on Test Data")
     st.write("### Accuracy:", accuracy)
     st.write("### Recall:", recall)
+    st.write("### Precision:", prec)
     st.write("### F1 Score:", f1)
     st.write("### ROC AUC:", roc_score)
     
-    metrics = ["Accuracy", "Recall", "F1 Score"]
-    values = [accuracy, recall, f1]
+    metrics = ["Accuracy", "Recall","Precision", "F1 Score"]
+    values = [accuracy, recall, prec, f1]
 
     plt.figure(figsize=(20,12))
     plt.bar(metrics, values)
-    plt.title("Evaluation Metrics on Test Data")
-    plt.xlabel("Metrics")
-    plt.ylabel("Values")
+    plt.title("Evaluation Metrics on Test Data", font_size=15)
+    plt.xlabel("Metrics", font_size=15 )
+    plt.ylabel("Values", font_size=15)
     st.pyplot(plt)
 
     fpr, tpr, thresholds = roc_curve(y_test, y_pred)
