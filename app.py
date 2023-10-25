@@ -237,16 +237,13 @@ elif menu ==  "Klasifikasi":
                 for x in lab_enc_data.columns:
                     file[x]=lab_enc_data[x]
                 input_data = file
+                
                 if st.sidebar.button("Predict"):
-                    prediction = model.predict(input_data)
+                    proba = model.predict_proba(input_data[:, 1]
+                    prediction = (proba > threshold).astype(int)
+                    
                     file["Prediction"] = prediction
-                    # Visualisasi hasil prediksi dalam bentuk pie chart
-                    st.write("## Visualisasi Hasil Prediksi")
-                    prediction_counts = file['Prediction'].value_counts()
-                    labels = ['Kelas 0', 'Kelas 1']
-                    sizes = [prediction_counts.get(0, 0), prediction_counts.get(1, 0)]
-                    total_data = sum(sizes)
-                    percentages = [(size / total_data) * 100 for size in sizes]
+                    file["Probabilitas"] = proba[0]
                     
                     fig1, ax1 = plt.subplots()
                     ax1.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90)
