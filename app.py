@@ -262,7 +262,7 @@ elif menu ==  "Klasifikasi":
                 st.sidebar.write("Upload File Success")
                 file = pd.read_csv(uploaded_file)
                 file2 = file.copy()
-                X = file.drop(columns=['stroke']
+                X = file.drop(columns=['stroke'])
                 Y = file['stroke']
                 required_columns = ['gender', 'ever_married', 'Residence_type', 'work_type', 'smoking_status']
                 missing_columns = [col for col in required_columns if col not in file.columns]
