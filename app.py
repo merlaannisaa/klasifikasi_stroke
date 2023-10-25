@@ -243,7 +243,7 @@ elif menu ==  "Klasifikasi":
                     prediction = (proba > threshold).astype(int)
                         
                     file["Prediction"] = prediction
-                    file["Probabilitas"] = proba[0][1]
+                    file["Probabilitas"] = proba[1]
                         
                     # fig1, ax1 = plt.subplots()
                     # ax1.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90)
