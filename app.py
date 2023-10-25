@@ -287,7 +287,8 @@ elif menu ==  "Klasifikasi":
                             
                         file2["Prediction"] = prediction
                         # file2["Probabilitas"] = proba
-                            
+
+                        st.write("Akurasi :", acc)
                         st.write("## Hasil Prediksi Pada Data") 
                         st.write(file2)
                               
