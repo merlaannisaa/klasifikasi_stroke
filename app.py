@@ -284,7 +284,8 @@ elif menu ==  "Klasifikasi":
                         # proba = model.predict_proba(input_data)[:, 1]
                         # prediction = (proba > threshold).astype(int)
                         # acc = accuracy_score(Y, prediction)
-                        prediction = model.predict(input_data)    
+                        prediction = model.predict(input_data)   
+                        acc = accuracy_score(Y, prediction)
                         file2["Prediction"] = prediction
                         # file2["Probabilitas"] = proba
 
