@@ -240,7 +240,7 @@ elif menu ==  "Klasifikasi":
                 
                 if st.sidebar.button("Predict"):
                         threshold = 0.1
-                        proba = model.predict_proba(input_data[:, 1]
+                        proba = model.predict_proba(input_data[:, 1])
                         prediction = (proba > threshold).astype(int)
                         
                         file["Prediction"] = prediction
