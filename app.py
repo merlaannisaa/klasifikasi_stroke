@@ -276,7 +276,7 @@ elif menu ==  "Klasifikasi":
                         lab_enc_data[x]=lab_enc.fit_transform(lab_enc_data[x])
                     for x in lab_enc_data.columns:
                         X[x]=lab_enc_data[x]
-                    input_data = file
+                    input_data = X
                     
                     if st.sidebar.button("Predict"):
     
