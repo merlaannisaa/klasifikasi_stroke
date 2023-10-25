@@ -276,8 +276,8 @@ elif menu ==  "Klasifikasi":
                         file[x]=lab_enc_data[x]
                     # input_data = file
 
-                    x = file.drop(columns=['stroke']
-                    y = file['stroke']
+                x = file.drop(columns=['stroke']
+                y = file['stroke']
                     
                     if st.sidebar.button("Predict"):
     
