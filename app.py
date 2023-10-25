@@ -243,15 +243,16 @@ elif menu ==  "Klasifikasi":
                     prediction = (proba > threshold).astype(int)
                         
                     file["Prediction"] = prediction
-                    file["Probabilitas"] = proba
-                        
-                    # fig1, ax1 = plt.subplots()
-                    # ax1.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90)
-                    # ax1.axis('equal')  # Lingkaran yang sama
-                    # st.write(f"Jumlah Data: {total_data}")
-                    # st.write(f"Jumlah Data Terprediksi 0: {sizes[0]} ({percentages[0]:.1f}%)")
-                    # st.write(f"Jumlah Data Terprediksi 1: {sizes[1]} ({percentages[1]:.1f}%)")
-                    # st.pyplot(fig1)
+                    # file["Probabilitas"] = proba
+
+                    labels = ['Kelas 0', 'Kelas 1']
+                    fig1, ax1 = plt.subplots()
+                    ax1.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90)
+                    ax1.axis('equal')  # Lingkaran yang sama
+                    st.write(f"Jumlah Data: {total_data}")
+                    st.write(f"Jumlah Data Terprediksi 0: {sizes[0]} ({percentages[0]:.1f}%)")
+                    st.write(f"Jumlah Data Terprediksi 1: {sizes[1]} ({percentages[1]:.1f}%)")
+                    st.pyplot(fig1)
                         
                     st.write("## Hasil Prediksi Pada Data")
                     st.write(file)
