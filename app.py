@@ -122,13 +122,13 @@ if menu == "Visualisasi":
 
     # Membuat kurva ROC
     fig, ax = plt.subplots(figsize=(20, 12), dpi=500)
-    ax.plot(fpr, tpr, label=f'ROC curve (AUC = {roc_score:.2f})')
+    ax.plot(fpr, tpr, label=f'ROC curve (AUC = {roc_score:.2f})', fontsize=30)
     ax.plot([0, 1], [0, 1], 'k--')
     ax.set_xlim([0.0, 1.0])
     ax.set_ylim([0.0, 1.05])
-    ax.set_xlabel('False Positive Rate')
-    ax.set_ylabel('True Positive Rate')
-    ax.set_title('Receiver Operating Characteristic (ROC) Curve')
+    ax.set_xlabel('False Positive Rate', fontsize=30)
+    ax.set_ylabel('True Positive Rate', fontsize=30)
+    ax.set_title('ROC Curve', fontsize=30)
     ax.legend(loc="lower right")
 
     # Menampilkan kurva ROC di aplikasi Streamlit
