@@ -264,6 +264,7 @@ elif menu ==  "Klasifikasi":
                 file2 = file.copy()
                 required_columns = ['gender', 'ever_married', 'Residence_type', 'work_type', 'smoking_status']
                 missing_columns = [col for col in required_columns if col not in file.columns]
+                
                 if missing_columns :
                     st.error(f"Kolom_kolom berikut tidak ditemukan dalam file: {', '.join(missing_columns)}'")
                 else:
@@ -273,16 +274,17 @@ elif menu ==  "Klasifikasi":
                         lab_enc_data[x]=lab_enc.fit_transform(lab_enc_data[x])
                     for x in lab_enc_data.columns:
                         file[x]=lab_enc_data[x]
-                    # input_data = file
+                    input_data = file
 
-                    x = file.drop(columns=['stroke']
-                    y = file['stroke']
+                    X = input_data.drop(columns=['stroke']
+                    Y = input_data['stroke']
+                    
                     if st.sidebar.button("Predict"):
     
                         threshold = 0.1
-                        proba = model.predict_proba(x)[:, 1]
+                        proba = model.predict_proba(X)[:, 1]
                         prediction = (proba > threshold).astype(int)
-                        acc = accuracy_score(y, prediction)
+                        acc = accuracy_score(Y, prediction)
                             
                         file2["Prediction"] = prediction
                         # file2["Probabilitas"] = proba
