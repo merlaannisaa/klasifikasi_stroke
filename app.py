@@ -248,6 +248,7 @@ elif menu ==  "Klasifikasi":
                     labels = ['Kelas 0', 'Kelas 1']
                     fig1, ax1 = plt.subplots()
                     sizes = file["Prediction"].value_counts()
+                    total_data = len(file)
                     ax1.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90)
                     ax1.axis('equal')  # Lingkaran yang sama
                     st.write(f"Jumlah Data: {total_data}")
