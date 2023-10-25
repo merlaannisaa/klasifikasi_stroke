@@ -309,7 +309,7 @@ elif menu ==  "Klasifikasi":
                         file2["Prediction"] = prediction
                         total_data = len(file)
 
-                        st.write("Jumlah Data:", total_data})
+                        st.write("Jumlah Data:", {total_data})
                         st.write("Akurasi :", acc)
                         st.write("Recall :", recall)
                         st.write("Precision :", prec)
