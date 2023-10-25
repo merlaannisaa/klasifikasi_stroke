@@ -176,9 +176,7 @@ elif menu ==  "Klasifikasi":
                     # ... (input processing)
                     input_data = [[gender, age, hypertension, heart_disease, ever_married, work_type, residence_type, avg_glucose_level, bmi, smoking_status]]
                     input_df = pd.DataFrame(input_data, columns=["gender", "age", "hypertension", "heart_disease", "ever_married", "work_type", "Residence_type", "avg_glucose_level", "bmi", "smoking_status"])
-                    
-                    # prediction = model.predict(input_data)
-            
+                                
                     # Menampilkan data input pengguna
                     st.write("### Data Input")
                     st.write("Gender:", "Female" if gender == 0 else "Male")
@@ -239,12 +237,13 @@ elif menu ==  "Klasifikasi":
                 input_data = file
                 
                 if st.sidebar.button("Predict"):
+
                     threshold = 0.1
-                    proba = model.predict_proba(input_data[:, 1])
+                    proba = model.predict_proba(input_data)[:, 1]
                     prediction = (proba > threshold).astype(int)
                         
                     file["Prediction"] = prediction
-                    file["Probabilitas"] = proba[0]
+                    # file["Probabilitas"] = proba[0]
                         
                     fig1, ax1 = plt.subplots()
                     ax1.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90)
