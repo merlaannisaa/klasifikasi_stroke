@@ -113,7 +113,7 @@ if menu == "Visualisasi":
 
     plt.figure(figsize=(20,12))
     plt.bar(metrics, values)
-    plt.tick_params(axis='x', labelrotation=45, labelsize= 25)
+    plt.tick_params(axis='x', labelrotation=0, labelsize= 25)
     plt.title("Evaluation Metrics on Test Data", fontsize=30)
     plt.xlabel("Metrics", fontsize=30)
     plt.ylabel("Values", fontsize=30)
