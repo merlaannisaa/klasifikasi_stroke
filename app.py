@@ -257,9 +257,9 @@ elif menu ==  "Klasifikasi":
                         total_data = len(file)
                         jumlah_1 = sum(prediction)
                         jumlah_0 = total_data = jumlah_1
-                        st.write("Jumlah Data: (total_data)")
-                        st.write(f"Terklasifikasi Stroke: (len{jumlah_1})")
-                        st.write(f"Terklasifikasi Tidak Stroke: (len{jumlah_0})")
+                        st.write("Jumlah Data:", total_data)
+                        st.write(f"Terklasifikasi Stroke:", jumlah_1)
+                        st.write(f"Terklasifikasi Tidak Stroke:", jumlah_0)
 
                         file2["Prediction"] = prediction
                         # file["Probabilitas"] = proba
@@ -309,7 +309,7 @@ elif menu ==  "Klasifikasi":
                         file2["Prediction"] = prediction
                         total_data = len(file)
 
-                        st.write("Jumlah Data:", {total_data})
+                        st.write("Jumlah Data:", total_data)
                         st.write("Akurasi :", acc)
                         st.write("Recall :", recall)
                         st.write("Precision :", prec)
