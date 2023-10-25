@@ -311,3 +311,14 @@ elif menu ==  "Klasifikasi":
                         b64 = base64.b64encode(csv.encode()).decode()
                         href = f'<a href="data:file/csv;base64,{b64}" download="hasil_prediksi.csv">Unduh Hasil Prediksi (CSV)</a>'
                         st.markdown(href, unsafe_allow_html=True)
+
+                        # Mengatur urutan kelas
+                        class_order = [1, 0]  # Urutan yang diinginkan, [1, 0] dalam hal ini
+                        confusion = confusion_matrix(Y, prediction, labels=class_order)
+                        # Menampilkan confusion matrix
+                        st.write("## Confusion Matrix")
+                        plt.figure(figsize=(6, 4))
+                        sns.heatmap(confusion, annot=True, fmt='d', cmap='Blues', xticklabels=class_order, yticklabels=class_order)
+                        plt.xlabel('Predicted')
+                        plt.ylabel('Actual')
+                        st.pyplot(plt)
