@@ -216,40 +216,44 @@ elif menu ==  "Klasifikasi":
             
                 except ValueError:
                     st.error("Invalid input.")
-                    
+    
     elif input_type == "File Input":
+        input_type = st.sidebar.selectbox("Pilih Jenis Input", ["File without Labels", "File with Label"])
+        if input_type == "File without Labels":
         uploaded_file = st.sidebar.file_uploader("Upload File", type=["csv"])
 
-        if uploaded_file is not None:
-            st.sidebar.write("Upload File Success")
-            file = pd.read_csv(uploaded_file)
-            required_columns = ['gender', 'ever_married', 'Residence_type', 'work_type', 'smoking_status']
-            missing_columns = [col for col in required_columns if col not in file.columns]
-            if missing_columns :
-                st.error(f"Kolom_kolom berikut tidak ditemukan dalam file: {', '.join(missing_columns)}'")
-            else:
-                lab_enc = LabelEncoder()      
-                lab_enc_data= file[required_columns]
-                for x in lab_enc_data.columns:
-                    lab_enc_data[x]=lab_enc.fit_transform(lab_enc_data[x])
-                for x in lab_enc_data.columns:
-                    file[x]=lab_enc_data[x]
-                input_data = file
-                
-                if st.sidebar.button("Predict"):
-
-                    threshold = 0.1
-                    proba = model.predict_proba(input_data)[:, 1]
-                    prediction = (proba > threshold).astype(int)
-                        
-                    file["Prediction"] = prediction
-                    # file["Probabilitas"] = proba
-                        
-                    st.write("## Hasil Prediksi Pada Data")
-                    st.write(file)
-                          
-                    csv = file.to_csv(index=False)
-                    b64 = base64.b64encode(csv.encode()).decode()
-                    href = f'<a href="data:file/csv;base64,{b64}" download="hasil_prediksi.csv">Unduh Hasil Prediksi (CSV)</a>'
-                    st.markdown(href, unsafe_allow_html=True)
+            if uploaded_file is not None:
+                st.sidebar.write("Upload File Success")
+                file = pd.read_csv(uploaded_file)
+                required_columns = ['gender', 'ever_married', 'Residence_type', 'work_type', 'smoking_status']
+                missing_columns = [col for col in required_columns if col not in file.columns]
+                if missing_columns :
+                    st.error(f"Kolom_kolom berikut tidak ditemukan dalam file: {', '.join(missing_columns)}'")
+                else:
+                    lab_enc = LabelEncoder()      
+                    lab_enc_data= file[required_columns]
+                    for x in lab_enc_data.columns:
+                        lab_enc_data[x]=lab_enc.fit_transform(lab_enc_data[x])
+                    for x in lab_enc_data.columns:
+                        file[x]=lab_enc_data[x]
+                    input_data = file
+                    
+                    if st.sidebar.button("Predict"):
     
+                        threshold = 0.1
+                        proba = model.predict_proba(input_data)[:, 1]
+                        prediction = (proba > threshold).astype(int)
+                            
+                        file["Prediction"] = prediction
+                        # file["Probabilitas"] = proba
+                            
+                        st.write("## Hasil Prediksi Pada Data")
+                        st.write(file)
+                              
+                        csv = file.to_csv(index=False)
+                        b64 = base64.b64encode(csv.encode()).decode()
+                        href = f'<a href="data:file/csv;base64,{b64}" download="hasil_prediksi.csv">Unduh Hasil Prediksi (CSV)</a>'
+                        st.markdown(href, unsafe_allow_html=True)
+
+        elif input_type == "File with Labels":
+        
