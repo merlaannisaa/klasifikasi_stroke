@@ -262,6 +262,8 @@ elif menu ==  "Klasifikasi":
                 st.sidebar.write("Upload File Success")
                 file = pd.read_csv(uploaded_file)
                 file2 = file.copy()
+                X = file.drop(columns=['stroke']
+                Y = file['stroke']
                 required_columns = ['gender', 'ever_married', 'Residence_type', 'work_type', 'smoking_status']
                 missing_columns = [col for col in required_columns if col not in file.columns]
                 
@@ -269,22 +271,19 @@ elif menu ==  "Klasifikasi":
                     st.error(f"Kolom_kolom berikut tidak ditemukan dalam file: {', '.join(missing_columns)}'")
                 else:
                     lab_enc = LabelEncoder()      
-                    lab_enc_data= file[required_columns]
+                    lab_enc_data= X[required_columns]
                     for x in lab_enc_data.columns:
                         lab_enc_data[x]=lab_enc.fit_transform(lab_enc_data[x])
                     for x in lab_enc_data.columns:
-                        file[x]=lab_enc_data[x]
-                    # input_data = file
-
-                x = file.drop(columns=['stroke']
-                y = file['stroke']
+                        X[x]=lab_enc_data[x]
+                    input_data = file
                     
                     if st.sidebar.button("Predict"):
     
                         threshold = 0.1
-                        proba = model.predict_proba(x)[:, 1]
+                        proba = model.predict_proba(input_data)[:, 1]
                         prediction = (proba > threshold).astype(int)
-                        acc = accuracy_score(y, prediction)
+                        acc = accuracy_score(Y, prediction)
                             
                         file2["Prediction"] = prediction
                         # file2["Probabilitas"] = proba
