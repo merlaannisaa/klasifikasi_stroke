@@ -112,7 +112,8 @@ if menu == "Visualisasi":
     values = [accuracy, recall, prec, f1]
 
     plt.figure(figsize=(20,12))
-    plt.bar(metrics, values, fontsize=30)
+    plt.bar(metrics, values)
+    plt.tick_params(axis='x', labelrotation=90, labelsize= 25)
     plt.title("Evaluation Metrics on Test Data", fontsize=30)
     plt.xlabel("Metrics", fontsize=30)
     plt.ylabel("Values", fontsize=30)
