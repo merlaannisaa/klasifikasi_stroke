@@ -81,13 +81,26 @@ if menu == "Visualisasi":
     # Menghitung akurasi model
     accuracy = accuracy_score(y_test, y_pred)
 
+    # # Menampilkan confusion matrix
+    # conf_matrix = confusion_matrix(y_test, y_pred)
+    # st.write(f"### Confusion Matrix")
+    # # Menggunakan plotly untuk membuat confusion matrix
+    # fig = ff.create_annotated_heatmap(conf_matrix, x=['Predicted 0', 'Predicted 1'], y=['Actual 0', 'Actual 1'], colorscale='Viridis')
+    # fig.update_layout(width=500, height=400)
+    # st.plotly_chart(fig)
+
+    # Mengatur urutan kelas
+    class_order = [1, 0]  # Urutan yang diinginkan, [1, 0] dalam hal ini
+
+    confusion = confusion_matrix(y_test, y_pred, labels=class_order)
+
     # Menampilkan confusion matrix
-    conf_matrix = confusion_matrix(y_test, y_pred)
-    st.write(f"### Confusion Matrix")
-    # Menggunakan plotly untuk membuat confusion matrix
-    fig = ff.create_annotated_heatmap(conf_matrix, x=['Predicted 0', 'Predicted 1'], y=['Actual 0', 'Actual 1'], colorscale='Viridis')
-    fig.update_layout(width=500, height=400)
-    st.plotly_chart(fig)
+    st.write("## Confusion Matrix")
+    plt.figure(figsize=(6, 4))
+    sns.heatmap(confusion, annot=True, fmt='d', cmap='Blues', xticklabels=class_order, yticklabels=class_order)
+    plt.xlabel('Predicted')
+    plt.ylabel('Actual')
+    st.pyplot(plt)
 
     # Menghitung recall, F1 score, dan ROC score
     recall = recall_score(y_test, y_pred)
