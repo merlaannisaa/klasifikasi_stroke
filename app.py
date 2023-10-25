@@ -180,7 +180,7 @@ elif menu ==  "Klasifikasi":
             smoking_status = st.selectbox("Smoking Status", list(smoking_status_dict.keys()))
             smoking_status = smoking_status_dict[smoking_status]
         
-        if st.sidebar.button("Predict"):
+        if st.sidebar.button("Generate"):
                 try:
                     # ... (input processing)
                     input_data = [[gender, age, hypertension, heart_disease, ever_married, work_type, residence_type, avg_glucose_level, bmi, smoking_status]]
@@ -212,10 +212,10 @@ elif menu ==  "Klasifikasi":
                     st.write("### Prediction Result")
 
                     if prediction[0] == 1:
-                        st.error("Pasien Memiliki Risiko Stroke!")
+                        st.error("Pasien Terklasifikasi Stroke!")
                         # st.write("Probabilitas Risiko Stroke:", proba[0])
                     else:
-                        st.success("Pasien Tidak Berisiko Stroke!")
+                        st.success("Pasien Terklasifikasi Tidak Stroke!")
                         # st.write("Probabilitas Risiko Stroke:", proba[0])
                     
                     # # Jika Anda ingin menambahkan hasil prediksi ke dalam DataFrame
@@ -248,7 +248,7 @@ elif menu ==  "Klasifikasi":
                         file[x]=lab_enc_data[x]
                     input_data = file
                     
-                    if st.sidebar.button("Predict"):
+                    if st.sidebar.button("Generate"):
     
                         threshold = 0.1
                         proba = model.predict_proba(input_data)[:, 1]
@@ -258,8 +258,8 @@ elif menu ==  "Klasifikasi":
                         jumlah_1 = sum(prediction)
                         jumlah_0 = total_data = jumlah_1
                         st.write("Jumlah Data: {total_data}")
-                        st.write("Terprediksi Stroke: {jumlah_1}")
-                        st.write("Terprediksi Tidak Stroke: {jumlah_0}")
+                        st.write("Terklasifikasi Stroke:", jumlah_1)
+                        st.write("Terklasifikasi Tidak Stroke:", jumlah_0)
                         
                         file2["Prediction"] = prediction
                         # file["Probabilitas"] = proba
@@ -295,7 +295,7 @@ elif menu ==  "Klasifikasi":
                         X[x]=lab_enc_data[x]
                     input_data = X
                     
-                    if st.sidebar.button("Predict"):
+                    if st.sidebar.button("Generate"):
     
                         threshold = 0.1
                         proba = model.predict_proba(input_data)[:, 1]
@@ -307,7 +307,9 @@ elif menu ==  "Klasifikasi":
                         prec = precision_score(Y, prediction)
                         f1 = f1_score(Y, prediction)
                         file2["Prediction"] = prediction
+                        total_data = len(file)
 
+                        st.write("Jumlah Data:", total_data})
                         st.write("Akurasi :", acc)
                         st.write("Recall :", recall)
                         st.write("Precision :", prec)
