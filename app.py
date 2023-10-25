@@ -197,21 +197,18 @@ elif menu ==  "Klasifikasi":
                     smoking_status_mapping = {0: "Unknown", 1: "Formerly Smoked", 2: "Never Smoked", 3: "Smokes"}
                     smoking_status_text = smoking_status_mapping.get(smoking_status, "Unknown")
                     st.write("Smoking Status:", smoking_status_text)
+
+                    threshold = 0.1
+                    proba = model.predict_proba(input_data)[:, 1]
+                    prediction = (proba > threshold).astype(int)
                     
                     st.write("### Prediction Result")
-                    # if prediction[0] == 1:
-                    #     st.error("Risiko stroke tinggi!")
-                    # else:
-                    #     st.success("Risiko stroke rendah!")
+
                     if prediction[0] == 1:
                         st.error("Risiko stroke tinggi!")
-                        # Jika Anda ingin menampilkan nilai probabilitas pada hasil prediksi, Anda dapat menggunakan model.predict_proba
-                        proba = model.predict_proba(input_data)
                         st.write("Probabilitas Risiko Stroke:", proba[0][1])
                     else:
                         st.success("Risiko stroke rendah!")
-                        # Jika Anda ingin menampilkan nilai probabilitas pada hasil prediksi, Anda dapat menggunakan model.predict_proba
-                        proba = model.predict_proba(input_data)
                         st.write("Probabilitas Risiko Stroke:", proba[0][1])
                     
                     # # Jika Anda ingin menambahkan hasil prediksi ke dalam DataFrame
