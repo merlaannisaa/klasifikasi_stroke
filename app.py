@@ -255,8 +255,8 @@ elif menu ==  "Klasifikasi":
                         prediction = (proba > threshold).astype(int)
 
                         total_data = len(file)
-                        jumlah_1 = sum(prediction)
-                        jumlah_0 = total_data = jumlah_1
+                        jumlah_1 = (prediction == 1).sum()
+                        jumlah_0 = (prediction == 0).sum()
                         st.write("Jumlah Data:", total_data)
                         st.write(f"Terklasifikasi Stroke:", jumlah_1)
                         st.write(f"Terklasifikasi Tidak Stroke:", jumlah_0)
