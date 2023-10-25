@@ -238,27 +238,27 @@ elif menu ==  "Klasifikasi":
                     file[x]=lab_enc_data[x]
                 input_data = file
                 
-            if st.sidebar.button("Predict"):
-                    threshold = 0.1
-                    proba = model.predict_proba(input_data[:, 1]
-                    prediction = (proba > threshold).astype(int)
-                    
-                    file["Prediction"] = prediction
-                    file["Probabilitas"] = proba[0]
-                    
-                    fig1, ax1 = plt.subplots()
-                    ax1.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90)
-                    ax1.axis('equal')  # Lingkaran yang sama
-                    st.write(f"Jumlah Data: {total_data}")
-                    st.write(f"Jumlah Data Terprediksi 0: {sizes[0]} ({percentages[0]:.1f}%)")
-                    st.write(f"Jumlah Data Terprediksi 1: {sizes[1]} ({percentages[1]:.1f}%)")
-                    st.pyplot(fig1)
-                    
-                    st.write("## Hasil Prediksi Pada Data")
-                    st.write(file)
-                      
-                    csv = file.to_csv(index=False)
-                    b64 = base64.b64encode(csv.encode()).decode()
-                    href = f'<a href="data:file/csv;base64,{b64}" download="hasil_prediksi.csv">Unduh Hasil Prediksi (CSV)</a>'
-                    st.markdown(href, unsafe_allow_html=True)
-
+                if st.sidebar.button("Predict"):
+                        threshold = 0.1
+                        proba = model.predict_proba(input_data[:, 1]
+                        prediction = (proba > threshold).astype(int)
+                        
+                        file["Prediction"] = prediction
+                        file["Probabilitas"] = proba[0]
+                        
+                        fig1, ax1 = plt.subplots()
+                        ax1.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90)
+                        ax1.axis('equal')  # Lingkaran yang sama
+                        st.write(f"Jumlah Data: {total_data}")
+                        st.write(f"Jumlah Data Terprediksi 0: {sizes[0]} ({percentages[0]:.1f}%)")
+                        st.write(f"Jumlah Data Terprediksi 1: {sizes[1]} ({percentages[1]:.1f}%)")
+                        st.pyplot(fig1)
+                        
+                        st.write("## Hasil Prediksi Pada Data")
+                        st.write(file)
+                          
+                        csv = file.to_csv(index=False)
+                        b64 = base64.b64encode(csv.encode()).decode()
+                        href = f'<a href="data:file/csv;base64,{b64}" download="hasil_prediksi.csv">Unduh Hasil Prediksi (CSV)</a>'
+                        st.markdown(href, unsafe_allow_html=True)
+    
