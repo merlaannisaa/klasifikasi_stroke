@@ -204,10 +204,10 @@ elif menu ==  "Klasifikasi":
 
                     if prediction[0] == 1:
                         st.error("Risiko stroke tinggi!")
-                        st.write("Probabilitas Risiko Stroke:", proba[0])
+                        # st.write("Probabilitas Risiko Stroke:", proba[0])
                     else:
                         st.success("Risiko stroke rendah!")
-                        st.write("Probabilitas Risiko Stroke:", proba[0])
+                        # st.write("Probabilitas Risiko Stroke:", proba[0])
                     
                     # # Jika Anda ingin menambahkan hasil prediksi ke dalam DataFrame
                     # input_df["Prediction"] = prediction
@@ -274,10 +274,10 @@ elif menu ==  "Klasifikasi":
                         lab_enc_data[x]=lab_enc.fit_transform(lab_enc_data[x])
                     for x in lab_enc_data.columns:
                         file[x]=lab_enc_data[x]
-                    input_data = file
+                    # input_data = file
 
-                    x = input_data.drop(columns=['stroke']
-                    y = input_data['stroke']
+                    x = file.drop(columns=['stroke']
+                    y = file['stroke']
                     
                     if st.sidebar.button("Predict"):
     
