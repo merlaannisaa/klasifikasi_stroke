@@ -273,10 +273,10 @@ elif menu ==  "Klasifikasi":
                         lab_enc_data[x]=lab_enc.fit_transform(lab_enc_data[x])
                     for x in lab_enc_data.columns:
                         file[x]=lab_enc_data[x]
-                    input_data = file
+                    # input_data = file
 
-                    x = input_data.drop(columns=['stroke']
-                    y = input_data['stroke']
+                    x = file.drop(columns=['stroke']
+                    y = file['stroke']
                     if st.sidebar.button("Predict"):
     
                         threshold = 0.1
