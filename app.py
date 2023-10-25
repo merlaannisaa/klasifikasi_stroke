@@ -243,8 +243,7 @@ elif menu ==  "Klasifikasi":
                     prediction = (proba > threshold).astype(int)
                         
                     file["Prediction"] = prediction
-                    file["Probabilitas Non Stroke"] = proba[0]
-                    file["Probabilitas Stroke"] = proba[1]
+                    file["Probabilitas"] = proba
                         
                     # fig1, ax1 = plt.subplots()
                     # ax1.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90)
