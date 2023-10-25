@@ -276,15 +276,15 @@ elif menu ==  "Klasifikasi":
                         file[x]=lab_enc_data[x]
                     input_data = file
 
-                    X = input_data.drop(columns=['stroke']
-                    Y = input_data['stroke']
+                    x = input_data.drop(columns=['stroke']
+                    y = input_data['stroke']
                     
                     if st.sidebar.button("Predict"):
     
                         threshold = 0.1
-                        proba = model.predict_proba(X)[:, 1]
+                        proba = model.predict_proba(x)[:, 1]
                         prediction = (proba > threshold).astype(int)
-                        acc = accuracy_score(Y, prediction)
+                        acc = accuracy_score(y, prediction)
                             
                         file2["Prediction"] = prediction
                         # file2["Probabilitas"] = proba
