@@ -250,10 +250,10 @@ elif menu ==  "Klasifikasi":
                     
                     if st.sidebar.button("Generate"):
     
-                        threshold = 0.1
-                        proba = model.predict_proba(input_data)[:, 1]
-                        prediction = (proba > threshold).astype(int)
-
+                        # threshold = 0.1
+                        # proba = model.predict_proba(input_data)[:, 1]
+                        # prediction = (proba > threshold).astype(int)
+                        prediction = model.predict(input_data)
                         total_data = len(file)
                         jumlah_1 = (prediction == 1).sum()
                         jumlah_0 = (prediction == 0).sum()
