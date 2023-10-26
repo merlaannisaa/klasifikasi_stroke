@@ -262,10 +262,10 @@ elif menu ==  "Klasifikasi":
                         st.write(f"Terklasifikasi Stroke:", jumlah_1)
                         st.write(f"Terklasifikasi Tidak Stroke:", jumlah_0)
 
-                        file2["Prediction"] = prediction
+                        file2["Classification"] = prediction
                         # file["Probabilitas"] = proba
                             
-                        st.write("## Hasil Prediksi Pada Data")
+                        st.write("## Hasil Klasifikasi Pada Data")
                         st.write(file2)
 
                         csv = file.to_csv(index=False)
@@ -307,7 +307,7 @@ elif menu ==  "Klasifikasi":
                         recall = recall_score(Y, prediction)
                         prec = precision_score(Y, prediction)
                         f1 = f1_score(Y, prediction)
-                        file2["Prediction"] = prediction
+                        file2["Classification"] = prediction
                         total_data = len(file)
 
                         st.write("Jumlah Data:", total_data)
@@ -315,12 +315,12 @@ elif menu ==  "Klasifikasi":
                         st.write("Recall :", recall)
                         st.write("Precision :", prec)
                         st.write("F1 Score :", f1)
-                        st.write("## Hasil Prediksi Pada Data") 
+                        st.write("## Hasil Klasifikasi Pada Data") 
                         st.write(file2)
                               
                         csv = file.to_csv(index=False)
                         b64 = base64.b64encode(csv.encode()).decode()
-                        href = f'<a href="data:file/csv;base64,{b64}" download="hasil_prediksi.csv">Unduh Hasil Prediksi (CSV)</a>'
+                        href = f'<a href="data:file/csv;base64,{b64}" download="hasil_klasifikasi.csv">Unduh Hasil Klasifikasi (CSV)</a>'
                         st.markdown(href, unsafe_allow_html=True)
 
                         # Mengatur urutan kelas
