@@ -76,7 +76,7 @@ menu = st.sidebar.selectbox("Menu", ["Visualisasi", "Klasifikasi"])
 if menu == "Visualisasi":
     # st.subheader("Visualisasi")
     # Mencetak jumlah data dalam set pelatihan dan pengujian
-    st.write(f"Jumlah Data Train: {len(resX_train)}")
+    st.write(f"Jumlah Data Training: {len(resX_train)}")
     st.write(f"Jumlah Data Testing: {len(X_test)}")
     
     # Menghitung akurasi model
